@@ -22,3 +22,13 @@ def updateFile(*params):    #actualiza el json
     with open(BASE+params[0],'w+') as bw:
         bw.seek(0)
         json.dump(params[1],bw,indent=4)
+    
+
+def clearScreen():
+    if os.sys.platform=='linux' or os.sys.platform=='darwin':
+        os.system('clear')
+    else:
+        os.system('cls')
+
+def pauseScreen():
+    input('Presiona cualquier boton para continuar... ')

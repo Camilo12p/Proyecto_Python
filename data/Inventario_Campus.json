@@ -1,6 +1,29 @@
 {
     "activos": {},
-    "personas": {},
+    "personas": {
+        "123": {
+            "id": 123,
+            "name": "wilmer",
+            "email": "wilmer@campus.com",
+            "telefonos": {
+                "movil": 312,
+                "casa": 400,
+                "personal": 300,
+                "oficina": 1234
+            }
+        },
+        "456": {
+            "id": 456,
+            "name": "camilo",
+            "email": "wilmer@campus.com",
+            "telefonos": {
+                "movil": 312,
+                "casa": 400,
+                "personal": 300,
+                "oficina": 1234
+            }
+        }
+    },
     "zonas": {},
     "asignacio": {}
 }
