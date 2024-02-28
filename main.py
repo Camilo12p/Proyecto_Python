@@ -7,7 +7,7 @@ if (__name__ == '__main__'):
         'activos':{},
         'personas':{},
         'zonas':{},
-        'asignacio':{}
+        'asignacion':{}
     }
     core.checkFile('Inventario_Campus.json',Inventario_Campus)
 
