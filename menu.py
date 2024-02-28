@@ -1,3 +1,4 @@
+import sys
 import os
 import modulos.coreFile as core
 import modulos.personal as p
@@ -12,9 +13,10 @@ def menuPrincipal(srcData:dict):
 
     titulo='''
 
-        +++++++++++++++++++++++++++++++++
-        +  Menu de asignacion de Campus +
-        +++++++++++++++++++++++++++++++++
+         _______________________________
+        |                               |    
+        |  Menu de asignacion de Campus |
+        |_______________________________|
 
     '''
 
@@ -25,7 +27,7 @@ def menuPrincipal(srcData:dict):
         try:
             core.clearScreen()
             print(titulo)
-            print(tabulate(menu,tablefmt='grid'))
+            print(tabulate(menu,tablefmt='fancy_grid'))
             op=int(input('Ingrese una opcion --> '))
             if op==1:
                 pass
@@ -41,7 +43,7 @@ def menuPrincipal(srcData:dict):
             elif op==6:
                 pass
             elif op==7:
-                isOption=False
+                sys.exit("Vuelva pronto, Bye Bye")
 
 
         except ValueError:
@@ -53,9 +55,10 @@ def menuPrincipal(srcData:dict):
 def menuPesonal(srcData:dict):
     titulo='''
 
-        +++++++++++++++++++++++++++++++++
-        +   Administracion de Pesonal   +
-        +++++++++++++++++++++++++++++++++
+         ___________________________________
+        |                                   |    
+        |  Menu Administracion de personal  |
+        |___________________________________|
 
     '''
 
@@ -65,7 +68,7 @@ def menuPesonal(srcData:dict):
     while isOption: 
         core.clearScreen()
         print(titulo)
-        print(tabulate(menu,tablefmt='grid'))
+        print(tabulate(menu,tablefmt='fancy_grid'))
         op=int(input('Ingrese una opcion --> '))
         if op==1:
             p.Agregar(srcData)
@@ -86,9 +89,10 @@ def menuPesonal(srcData:dict):
 def menuAsignacion(srcData:dict):
     titulo='''
 
-        ++++++++++++++++++++++++++++++++++++++
-        +   Administracion de asignaciones   +
-        ++++++++++++++++++++++++++++++++++++++
+         ____________________________
+        |                            |    
+        |    Menu de asignaciones    |
+        |____________________________|
 
     '''
 
@@ -98,13 +102,13 @@ def menuAsignacion(srcData:dict):
     while isOption: 
         core.clearScreen()
         print(titulo)
-        print(tabulate(menu,tablefmt='grid'))
+        print(tabulate(menu,tablefmt='fancy_grid'))
         op=int(input('Ingrese una opcion --> '))
         if op==1:
             A.CrearAsignacion(srcData)
             core.pauseScreen()
         elif op==2:
-            p.Editar(srcData)
+            A.buscarAsignaciones(srcData)
             core.pauseScreen()
         elif op==3:
             isOption=False

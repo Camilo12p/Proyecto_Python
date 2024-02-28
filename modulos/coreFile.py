@@ -31,4 +31,4 @@ def clearScreen():
         os.system('cls')
 
 def pauseScreen():
-    input('Presiona cualquier boton para continuar... ')
+    input('Presione cualquier tecla para continuar... ')
