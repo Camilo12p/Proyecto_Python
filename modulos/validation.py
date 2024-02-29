@@ -1,27 +1,28 @@
 import os 
 
 
-def validateInt(name:str,subject:str,action:str=''):
+def validateInt(context:str):
     try:
-        num=int(input('Ingrese el '+name+' del '+subject+' '+action+' --> '))
+        num=int(input(context +' --> '))
         if num>=0:
             return num
         else:
-            return validateInt(name,subject,action)
+            return validateInt(context)
     except ValueError:
-        return validateInt(name,subject,action)
+        return validateInt(context)
 
 
-def validateStr(name:str,subject:str,action:str=''):
-    n=input('Ingrese el '+name+' del '+subject+' '+action+' --> ')
+def validateStr(context:str):
+    n=input(context + ' --> ')
     if n.isalpha():
         return n
     else:
-        return validateStr(name,subject,action)
+        return validateStr(context)
 
-def validateEmail(action:str=''):
-    e=input('Ingrese el email del productor' +action+' --> ')
+def validateEmail(context:str):
+    e=input(context+ ' --> ')
     if e.isalnum():
-        return validateEmail(action)
+        return validateEmail(context)
     else:
         return e
+

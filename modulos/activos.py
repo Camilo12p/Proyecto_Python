@@ -3,17 +3,19 @@ import modulos.validation as v
 from tabulate import tabulate
 
 def DictActivos(srcData:dict):
-    CodTransaccion=v.validateInt('Codigo de transaccion','activo')
-    NroFormulario=v.validateInt('Nro de Formulario','activo')
-    CodCampus= v.validateInt('Cod Campus','activo')
-    Marca=v.validateStr('Marca','activo')
-    Categoria=v.validateStr('Categoria', 'activo')
-    Tipo=v.validateStr('Tipo','activo')
-    ValorUnitario=v.validateStr('Valor Unitario','activo')
-    Proveedor=v.validateStr('Proveedor','activo')
-    NroSerial=v.validateInt('Nro de serial','activo')
-    EmpresaResponsable=v.validateStr('Nombre del al empresa responsable ','activo')
-    ValorUnitario=v.validateStr('Valor Unitario ','activo')
+    CodTransaccion=v.validateInt('Ingrese el codigo de transaccion del activo')
+    NroFormulario=v.validateInt('Ingrese el Nro de formulario del activo')
+    CodCampus= v.validateInt('Ingrese el codigo de campus del activo')
+    Marca=v.validateStr('Ingrese la marca del activo')
+    Categoria=v.validateStr('Ingrese la categoria del activo')
+    Tipo=v.validateStr('Ingrese el tipo del activo')
+    ValorUnitario=v.validateStr('Ingrese el valor unitario del activo')
+    Proveedor=v.validateStr('Ingrese el proveedor del activo')
+    NroSerial=v.validateInt('Ingrese el numero serial del activo')
+    EmpresaResponsable=v.validateStr('Ingrese la empresa responsable del activo')
+    ValorUnitario=v.validateStr('Ingrese el valor unitario del activo')
+    Nombre=input('Ingrese el nombre completo del activo')
+                            
     persona={
         'CodTransaccion':CodTransaccion,
         'Nroformulario':NroFormulario,
@@ -26,7 +28,8 @@ def DictActivos(srcData:dict):
         'Nroserial':NroSerial,
         'EmpresaResponsable':EmpresaResponsable,
         'Estado':0,
-        'Historial':{}
+        'Historial':{},
+        'Nombre':Nombre
         }
     
 
@@ -34,11 +37,10 @@ def DictActivos(srcData:dict):
     core.updateFile('Inventario_Campus.json',srcData)
 
 def Editar(srcData:dict):
-    id=str(v.validateInt('id','personal','a editar'))
-    menu=[['1. Nombre'],['2.Email'],['3. telefonos']]
-    menu2=[['1.movil'],['2.Casa'],['3.Personal'],['4.Oficina']]
+    id=str(input('Ingrese el codigo de campus del activo a editar'))
+    menu=[['1. Codigo de transaccion'],['2. Numero de formulario'],['4. Marca']['5. Categoria']['6. Tipo']['7. Valor unitario']['8. Proveedor']['9. Numero serial']['10. Empresa Resposable']]
     
-    if id not in srcData.get('Personas'):
+    if id not in srcData.get('Activos'):
             print('El id no se encuentra en el sistema')
             return 
 
@@ -46,52 +48,63 @@ def Editar(srcData:dict):
     while isOption:
 
         print(tabulate(menu,tablefmt='fancy_grid'))
-        op=int(input('Seleccione una opcion --> '))
+        op=v.validateInt('Seleccione una opcion valida --> ')
 
         
         if op == 1:
-            srcData.get('Personas').get(id)['name']=v.validateStr('nombre','personal','a editar')
+            srcData.get('Activos').get(id)['CodTransaccion']=v.validateInt('Ingrese el Codigo de transaccion del activo a editar ')
             isOption=False
         elif op==2:
-            srcData.get('Personas').get(id)['email']=v.validateEmail('a editar')
+            srcData.get('Activos').get(id)['Nroformulario']=v.validateInt(' Ingrese el numero de formulario del activo a editar ')
             isOption=False
         elif op == 3:
-            print(tabulate(menu2,tablefmt='fancy_grid'))
-            op2=int(input('Seleccione una opcion --> '))
-            if op2==1:
-                srcData.get('Personas').get(id)['telefonos']['movil']=v.validateInt('movil','personal','a editar')
-                isOption=False
-            elif op2==2:
-                srcData.get('Personas').get(id)['telefonos']['casa']=v.validateInt('telefono de casa','personal','a editar')
-                isOption=False
-            elif op2==3:
-                srcData.get('Personas').get(id)['telefonos']['personal']=v.validateInt('telefono personal','personal','a editar')
-                isOption=False
-            elif op2==4:
-                srcData.get('Personas').get(id)['telefonos']['oficina']=v.validateInt('telefono de oficina','personal','a editar')
-                isOption=False
-            else:
-                print('ingrese un valor valido')
+            srcData.get('Activos').get(id)['CodCampus']=input('Ingrese el codigo de campus del activo')
+            isOption=False    
+        elif op==4:
+            srcData.get('Activos').get(id)['Marca']=v.validateStr(' Ingrese la marca del activo ')
+            isOption=False
+        elif op==5:
+            srcData.get('Activos').get(id)['Categoria']=v.validateStr(' Ingrese la categoria del activo ')
+            isOption=False
+        elif op==6:
+            srcData.get('Activos').get(id)['Tipo']=v.validateStr('Ingrese el tipo de activo')
+            isOption=False
+        elif op==7:
+            srcData.get('Activos').get(id)['ValorUnitario']=v.validateInt('Ingrese el telefono de oficina a editar')
+            isOption=False
+        elif op==8:
+            srcData.get('Activos').get(id)['Proveedor']=v.validateStr('Ingrese el nombre del proveedor')
+            isOption=False
+        elif op==6:
+            srcData.get('Activos').get(id)['Nroserial']=v.validateStr('Ingrese el numero serial del activo')
+            isOption=False
+        elif op==6:
+            srcData.get('Activos').get(id)['EmpresaResponsable']=v.validateStr('Ingrese el nombre de la empresa responsable')
+            isOption=False
+        elif op==6:
+            srcData.get('Activos').get(id)['Nombre']=v.validateStr('Ingrese el nombre del activo')
+            isOption=False
         else:
-            print('ingrese un valor valido')
+            print('Ingrese un valor valido')
+       
 
     core.updateFile('Inventario_Campus.json',srcData)
 
 def eliminar(srcData:dict):
-    id=str(v.validateInt('id','personal','a eliminar'))
-    if id not in srcData.get('Personas'):
+    id=str(input('Ingrese el activo a eliminar'))
+    if id not in srcData.get('Activos'):
             print('El id no se encuentra en el sistema')
             return 
-    srcData.get('Personas').pop(id)
+    srcData.get('Activos').pop(id)
     core.updateFile('Inventario_Campus.json',srcData)
 
 def buscar(srcData:dict):
-    id=str(v.validateInt('id','personal','a buscar'))
-    if id not in srcData.get('Personas'):
+    id=str(input('Ingrese el activo a buscar'))
+    if id not in srcData.get('Activos'):
             print('El id no se encuentra en el sistema')
             return 
     print()
     print('-------------------------------')
     
-    for key,value in srcData.get('Personas').get(id).items():
+    for key,value in srcData.get('Activos').get(id).items():
         print(f'{key}  : {value}')
