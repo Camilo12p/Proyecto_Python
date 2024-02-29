@@ -1,5 +1,5 @@
 import os 
-
+from modulos.coreFile import updateFile
 
 def validateInt(context:str):
     try:
@@ -13,7 +13,7 @@ def validateInt(context:str):
 
 
 def validateStr(context:str):
-    n=input(context + ' --> ')
+    n=str(input(context + ' --> '))
     if n.isalpha():
         return n
     else:
@@ -26,3 +26,12 @@ def validateEmail(context:str):
     else:
         return e
 
+def validatePrestamo(srcData:dict,id:int):
+    for key,value in srcData.get('Asignacion').items():
+        if int(value['asignadoA'])==id:
+            srcData.get('Personas').get(str(id))['Prestamo']=True
+            break
+        else:
+            srcData.get('Personas').get(str(id))['Prestamo']=False    
+
+    updateFile('Inventario.json',srcData)

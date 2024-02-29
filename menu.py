@@ -4,6 +4,7 @@ import modulos.coreFile as core
 import modulos.personal as p
 import modulos.asignaciones as A
 import modulos.movimientos as m
+import modulos.validation as v
 from tabulate import tabulate
 
 def menuPrincipal(srcData:dict):
@@ -29,7 +30,7 @@ def menuPrincipal(srcData:dict):
             core.clearScreen()
             print(titulo)
             print(tabulate(menu,tablefmt='fancy_grid'))
-            op=int(input('Ingrese una opcion --> '))
+            op=v.validateInt('Ingrese una opcion')
             if op==1:
                 pass
             elif op==2:
@@ -70,7 +71,7 @@ def menuPesonal(srcData:dict):
         core.clearScreen()
         print(titulo)
         print(tabulate(menu,tablefmt='fancy_grid'))
-        op=int(input('Ingrese una opcion --> '))
+        op=v.validateInt('Ingrese una opcion')
         if op==1:
             p.Agregar(srcData)
             core.pauseScreen()
@@ -104,7 +105,7 @@ def menuAsignacion(srcData:dict):
         core.clearScreen()
         print(titulo)
         print(tabulate(menu,tablefmt='fancy_grid'))
-        op=int(input('Ingrese una opcion --> '))
+        op=v.validateInt('Ingrese una opcion --> ')
         if op==1:
             A.CrearAsignacion(srcData)
             core.pauseScreen()
@@ -133,7 +134,7 @@ def menuMovimientos(srcData:dict):
         core.clearScreen()
         print(titulo)
         print(tabulate(menu,tablefmt='fancy_grid'))
-        op=int(input('Ingrese una opcion --> '))
+        op=v.validateInt('Ingrese una opcion')
         if op==1:
             m.retornos(srcData)
             core.pauseScreen()
