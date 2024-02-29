@@ -23,7 +23,7 @@ def Agregar(srcData:dict):
         }
     }
 
-    srcData.get('personas').update({id:persona})
+    srcData.get('perso2nas').update({id:persona})
     core.updateFile('Inventario_Campus.json',srcData)
 
 def Editar(srcData:dict):

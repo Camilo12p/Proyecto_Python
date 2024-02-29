@@ -3,6 +3,7 @@ import os
 import modulos.coreFile as core
 import modulos.personal as p
 import modulos.asignaciones as A
+import modulos.movimientos as m
 from tabulate import tabulate
 
 def menuPrincipal(srcData:dict):
@@ -41,7 +42,7 @@ def menuPrincipal(srcData:dict):
             elif op==5:
                 pass
             elif op==6:
-                pass
+                menuMovimientos(srcData)
             elif op==7:
                 sys.exit("Vuelva pronto, Bye Bye")
 
@@ -111,5 +112,40 @@ def menuAsignacion(srcData:dict):
             A.buscarAsignaciones(srcData)
             core.pauseScreen()
         elif op==3:
+            isOption=False
+            menuPrincipal(srcData)
+
+
+def menuMovimientos(srcData:dict):
+    titulo='''
+
+         ____________________________
+        |                            |    
+        |    Menu de movimientos     |
+        |____________________________|
+
+    '''
+
+    menu=[['1. Retornos de Activos'],['2. Dar de baja activo'],['3. Cambiar asignacion de activo'],['4. Enviar a garantia activo'],['5. Regresar a menu']]
+    
+    isOption=True
+    while isOption: 
+        core.clearScreen()
+        print(titulo)
+        print(tabulate(menu,tablefmt='fancy_grid'))
+        op=int(input('Ingrese una opcion --> '))
+        if op==1:
+            m.retornos(srcData)
+            core.pauseScreen()
+        elif op==2:
+            m.darBaja(srcData)
+            core.pauseScreen()
+        elif op==3:
+            m.cambiarAsignacion(srcData)
+            core.pauseScreen()
+        elif op==4:
+            m.enviarGarantia(srcData)
+            core.pauseScreen()
+        elif op==5:
             isOption=False
             menuPrincipal(srcData)
