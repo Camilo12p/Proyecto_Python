@@ -9,14 +9,13 @@ def DictActivos(srcData:dict):
     Marca=v.validateStr('Ingrese la marca del activo')
     Categoria=v.validateStr('Ingrese la categoria del activo')
     Tipo=v.validateStr('Ingrese el tipo del activo')
-    ValorUnitario=v.validateStr('Ingrese el valor unitario del activo')
+    ValorUnitario=v.validateInt('Ingrese el valor unitario del activo')
     Proveedor=v.validateStr('Ingrese el proveedor del activo')
     NroSerial=v.validateInt('Ingrese el numero serial del activo')
     EmpresaResponsable=v.validateStr('Ingrese la empresa responsable del activo')
-    ValorUnitario=v.validateStr('Ingrese el valor unitario del activo')
     Nombre=input('Ingrese el nombre completo del activo')
                             
-    persona={
+    activo={
         'CodTransaccion':CodTransaccion,
         'Nroformulario':NroFormulario,
         'Codcampus':CodCampus,
@@ -33,7 +32,7 @@ def DictActivos(srcData:dict):
         }
     
 
-    srcData.get('Activos').update({CodCampus:DictActivos})
+    srcData.get('Activos').update({CodCampus:activo})
     core.updateFile('Inventario_Campus.json',srcData)
 
 def Editar(srcData:dict):
@@ -70,7 +69,7 @@ def Editar(srcData:dict):
             srcData.get('Activos').get(id)['Tipo']=v.validateStr('Ingrese el tipo de activo')
             isOption=False
         elif op==7:
-            srcData.get('Activos').get(id)['ValorUnitario']=v.validateInt('Ingrese el telefono de oficina a editar')
+            srcData.get('Activos').get(id)['ValorUnitario']=v.validateInt('Ingrese el valor unitario')
             isOption=False
         elif op==8:
             srcData.get('Activos').get(id)['Proveedor']=v.validateStr('Ingrese el nombre del proveedor')
