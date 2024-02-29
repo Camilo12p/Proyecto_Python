@@ -4566,6 +4566,36 @@
             "empresaresponsable": "Campuslands",
             "estado": 0,
             "historial": {}
+        },
+        "6465": {
+            "CodTransaccion": 65465,
+            "Nroformulario": 654654,
+            "Codcampus": 6465,
+            "Marca": "fdhfhfd",
+            "Categoria": "dfhhfddhf",
+            "Tipo": "setyre",
+            "ValorUnitario": "syyhd",
+            "Proveedor": "sdggsd",
+            "Nroserial": 6543,
+            "EmpresaResponsable": "dsgsh",
+            "Estado": 0,
+            "Historial": {},
+            "Nombre": "hfd"
+        },
+        "54454": {
+            "CodTransaccion": 35245,
+            "Nroformulario": 545,
+            "Codcampus": 54454,
+            "Marca": "sdgs",
+            "Categoria": "sdg",
+            "Tipo": "sdg",
+            "ValorUnitario": 535,
+            "Proveedor": "sdg",
+            "Nroserial": 454,
+            "EmpresaResponsable": "sdgg",
+            "Estado": 0,
+            "Historial": {},
+            "Nombre": "sdgsgh"
         }
     }
 }

@@ -1,3 +1,5 @@
+import modulos.activos as ac
+import modulos.zona as zo
 import sys
 import os
 import modulos.coreFile as core
@@ -32,12 +34,12 @@ def menuPrincipal(srcData:dict):
             print(tabulate(menu,tablefmt='fancy_grid'))
             op=v.validateInt('Ingrese una opcion')
             if op==1:
-                pass
+                menuActivos(srcData)
             elif op==2:
                 menuPesonal(srcData)
                 pass
             elif op==3:
-                pass
+                menuZonas(srcData)
             elif op==4:
                 menuAsignacion(srcData)
             elif op==5:
@@ -53,6 +55,73 @@ def menuPrincipal(srcData:dict):
 
             core.pauseScreen()
 
+def menuActivos(srcData:dict):
+    titulo='''
+
+         ___________________________________
+        |                                   |    
+        |  Menu Administracion de activos   |
+        |___________________________________|
+
+    '''
+
+    menu=[['1. Agregar'],['2. Editar'],['3. Eliminar'],['4. Buscar'],['5. Regresar al menu']]
+    
+    isOption=True
+    while isOption: 
+        core.clearScreen()
+        print(titulo)
+        print(tabulate(menu,tablefmt='fancy_grid'))
+        op=int(input('Ingrese una opcion '))
+        if op==1:
+            ac.DictActivos(srcData)
+            core.pauseScreen()
+        elif op==2:
+            ac.Editar(srcData)
+            core.pauseScreen()
+        elif op==3:
+            ac.eliminar(srcData)
+            core.pauseScreen()
+        elif op==4:
+            ac.buscar(srcData)
+            core.pauseScreen()
+        elif op==5:
+            isOption=False
+            menuPrincipal(srcData)
+
+def menuZonas(srcData:dict):
+    titulo='''
+
+         _________________________________
+        |                                 |    
+        |  Menu Administracion de zonas   |
+        |_________________________________|
+
+    '''
+
+    menu=[['1. Agregar'],['2. Editar'],['3. Eliminar'],['4. Buscar'],['5. Regresar al menu']]
+    
+    isOption=True
+    while isOption: 
+        core.clearScreen()
+        print(titulo)
+        print(tabulate(menu,tablefmt='fancy_grid'))
+        op=int(input('Ingrese una opcion '))
+        if op==1:
+            zo.CrearZona(srcData)
+            core.pauseScreen()
+        elif op==2:
+            zo.Editar(srcData)
+            core.pauseScreen()
+        elif op==3:
+            zo.eliminar(srcData)
+            core.pauseScreen()
+        elif op==4:
+            zo.buscar(srcData)
+            core.pauseScreen()
+        elif op==5:
+            isOption=False
+            menuPrincipal(srcData)
 
 def menuPesonal(srcData:dict):
     titulo='''
