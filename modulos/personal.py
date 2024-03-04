@@ -4,6 +4,8 @@ from tabulate import tabulate
 
 def Agregar(srcData:dict):
     id=v.validateInt('Ingrese el C.C. de la persona')
+    if v.newRegister(str(id),'Personas'):
+        return
     name=v.validateStr('Ingrese el nombre de la persona')
     email= v.validateEmail('Ingrese el email')
     movil=v.validateInt('Ingrese el movil de la persona')

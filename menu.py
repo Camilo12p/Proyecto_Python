@@ -10,7 +10,6 @@ import modulos.validation as v
 from tabulate import tabulate
 
 def menuPrincipal(srcData:dict):
-    
     # def wrapper(func):  
     #     func
     #     menuPrincipal(Inventario_Campus)

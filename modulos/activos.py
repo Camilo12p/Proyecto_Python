@@ -3,9 +3,11 @@ import modulos.validation as v
 from tabulate import tabulate
 
 def DictActivos(srcData:dict):
+    CodCampus= input('Ingrese el codigo de campus del activo -->')
+    if v.newRegister(CodCampus,'Activos'):
+        return
     CodTransaccion=v.validateInt('Ingrese el codigo de transaccion del activo')
     NroFormulario=v.validateInt('Ingrese el Nro de formulario del activo')
-    CodCampus= v.validateInt('Ingrese el codigo de campus del activo')
     Marca=v.validateStr('Ingrese la marca del activo')
     Categoria=v.validateStr('Ingrese la categoria del activo')
     Tipo=v.validateStr('Ingrese el tipo del activo')

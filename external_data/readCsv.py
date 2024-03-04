@@ -13,21 +13,21 @@ def readCsv(Inventario_Campus:dict):
         for row in lector:
             id=''
             categoria=row[5].split('-')
-            if categoria[0] == 'Teclado':
+            if categoria[0].strip() == 'Teclado':
                 valor=250
                 id='TE' + str(cantidad[0]).zfill(4)
                 cantidad[0]+=1
 
-            elif categoria[0] == 'Monitor':
+            elif categoria[0].strip() == 'Monitor':
                 valor=500
                 id='MON' + str(cantidad[1]).zfill(4)
                 cantidad[1]+=1
 
-            elif categoria[0] == 'CPU':
+            elif categoria[0].strip() == 'CPU':
                 valor=1500
                 id='CP' + str(cantidad[2]).zfill(4)
                 cantidad[2]+=1
-            elif categoria[0] == 'Mouse':
+            elif categoria[0].strip() == 'Mouse':
                 valor=100
                 id='MO' + str(cantidad[3]).zfill(4)
                 cantidad[3]+=1
@@ -35,7 +35,7 @@ def readCsv(Inventario_Campus:dict):
             activo={
                 'codTransaccion':row[1],
                 'nroformulario':row[4],
-                'codcampus':row[3],
+                'codcampus':id,
                 'nombre':row[5],
                 'marca':'Compumax',
                 'categoria':'Equipo de computo',

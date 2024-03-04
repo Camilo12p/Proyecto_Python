@@ -4,6 +4,8 @@ from tabulate import tabulate
 
 def CrearZona(srcData:dict):
     NombreZona=v.validateStr('Ingrese el nombre de la zona')
+    if v.newRegister(NombreZona,'Zonas'):
+        return
     TotalCapacidad= v.validateInt('Ingrese la capacidad total')
 
     Zona={
@@ -35,7 +37,7 @@ def Editar(srcData:dict):
             isOption=False
         elif op==2:
             srcData.get('Zonas').get(id)['TotalCapacidad']=v.validateInt(' Ingrese la capacidad total')
-                                                                 
+        
             isOption=False
         else:
             print('Ingrese un valor valido')

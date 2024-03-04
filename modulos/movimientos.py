@@ -11,6 +11,7 @@ def retornos(srcData:dict):
             if id in value2:
                 value['activos'].pop(key2)
                 v.validatePrestamo(srcData,srcData.get('Asignacion').get(key2).get('asignadoA'))
+                v.validateAsignacion(srcData)
                 srcData.get('Activos').get(id)['estado']=0
                 r=1
                 break
@@ -26,6 +27,7 @@ def darBaja(srcData:dict):
             for key2,value2 in value['activos'].items():
                 if id in value2:
                     value['activos'].pop(key2)
+                    v.validateAsignacion(srcData)
                     v.validatePrestamo(srcData,srcData.get('Asignacion').get(key2).get('asignadoA'))
                     break
         try:
@@ -48,6 +50,7 @@ def cambiarAsignacion(srcData:dict):
                 if id in value2:
                     
                     value['activos'].pop(key2)
+                    v.validateAsignacion(srcData)
                     v.validatePrestamo(srcData,srcData.get('Asignacion').get(key2).get('asignadoA'))
                     updateHistorial(srcData,4,id1,id)
                     r=1
@@ -66,6 +69,7 @@ def enviarGarantia(srcData:dict):
             for key2,value2 in value['activos'].items():
                 if id in value2:
                     value['activos'].pop(key2)
+                    v.validateAsignacion(srcData)
                     v.validatePrestamo(srcData,srcData.get('Asignacion').get(key2).get('asignadoA'))
                     break
         try:

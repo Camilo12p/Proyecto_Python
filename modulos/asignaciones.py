@@ -51,7 +51,7 @@ def añadirActivos(srcData:dict,activos:dict, id1:int)->dict:
     id2=input('Ingrese el Nro de campus del activo a ingresar --> ')  #validar el id como se vaya a llamar en el dictionario activo
     if id2 not in srcData.get('Activos'):
         print('El id no se encuentra en el sistema')
-        añadirActivos(srcData,activos)
+        añadirActivos(srcData,activos,id1)
     else:
         if srcData.get('Activos')[id2]['estado']==0:
             activos.update({len(activos)+1:id2})
@@ -59,7 +59,7 @@ def añadirActivos(srcData:dict,activos:dict, id1:int)->dict:
             srcData.get('Activos')[id2]['estado']=1
             op=v.validateStr('desea añadir mas activos\n.S(si)\nENTER para NO \n ')
             core.updateFile('Inventario_Campus.json',srcData)
-            if op=='':
+            if op.lower()=='':
                 return
             elif op.lower()=='s' or op=='si':
                 añadirActivos(srcData,activos,id1)

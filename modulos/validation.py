@@ -1,5 +1,5 @@
 import os 
-from modulos.coreFile import updateFile
+from modulos.coreFile import updateFile,readFile
 
 def validateInt(context:str):
     try:
@@ -34,4 +34,19 @@ def validatePrestamo(srcData:dict,id:int):
         else:
             srcData.get('Personas').get(str(id))['Prestamo']=False    
 
-    updateFile('Inventario.json',srcData)
+    updateFile('Inventario_Campus.json',srcData)
+
+
+def validateAsignacion(srcData:dict):
+    for key,value in srcData.get('Asignacion').items():
+        if len(value['activos']) ==0:
+            srcData.get('Asignacion').pop(key)
+            break
+    updateFile('Inventario_Campus.json',srcData)
+
+
+def newRegister(id:str,tipo:str):
+    data.update(core.readFile('Inventario_Campus.json'))
+    if id in data.get(tipo):
+        print(f'El {tipo} ya se encuentra registrado')
+        return True
