@@ -22,11 +22,38 @@
                 "personal": 213,
                 "oficina": 23
             },
-            "Prestamo": false
+            "Prestamo": true
         }
     },
-    "Zonas": {},
-    "Asignacion": {},
+    "Zonas": {
+        "1": {
+            "NombreZona": "Apolo",
+            "TotalCapacidad": 33,
+            "NroZona": 1
+        },
+        "2": {
+            "NombreZona": "Spuknik",
+            "TotalCapacidad": 33,
+            "NroZona": 2
+        },
+        "3": {
+            "NombreZona": "Zona",
+            "TotalCapacidad": 33,
+            "NroZona": 3
+        }
+    },
+    "Asignacion": {
+        "1": {
+            "nroAsignacion": "0001",
+            "fechaAsignacion": "March 04 2024",
+            "tipoAsignacion": "zona",
+            "asignadoA": 456,
+            "activos": {
+                "1": "CP0001",
+                "2": "TE0001"
+            }
+        }
+    },
     "Activos": {
         "CP0001": {
             "codTransaccion": "327",
@@ -70,8 +97,15 @@
             "proveedor": "Compumax Computer ",
             "nroserial": "KBM130091706",
             "empresaresponsable": "Campuslands",
-            "estado": 0,
-            "historial": {}
+            "estado": 1,
+            "historial": {
+                "1": {
+                    "NroHistorial": 1,
+                    "fecha": "March042024",
+                    "tipoMov": 1,
+                    "idResponsable": 123
+                }
+            }
         },
         "MO0001": {
             "codTransaccion": "327",

@@ -19,6 +19,13 @@ def validateStr(context:str):
     else:
         return validateStr(context)
 
+def validateExit(context:str):
+    n=str(input(context + ' --> '))
+    if n.isalpha() or n=='':
+        return n
+    else:
+        return validateStr(context)
+
 def validateEmail(context:str):
     e=input(context+ ' --> ')
     if e.isalnum():
@@ -46,7 +53,16 @@ def validateAsignacion(srcData:dict):
 
 
 def newRegister(id:str,tipo:str):
-    data.update(core.readFile('Inventario_Campus.json'))
+    data={}
+    data.update(readFile('Inventario_Campus.json'))
     if id in data.get(tipo):
         print(f'El {tipo} ya se encuentra registrado')
         return True
+
+def newRegisterZona(id:str,tipo:str):
+    data={}
+    data.update(readFile('Inventario_Campus.json'))
+    for key,value in data.get(tipo).items():
+        if id in value['NombreZona']:
+            print(f'El {tipo} ya se encuentra registrado')
+            return True

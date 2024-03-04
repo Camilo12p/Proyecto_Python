@@ -15,6 +15,8 @@ def retornos(srcData:dict):
                 srcData.get('Activos').get(id)['estado']=0
                 r=1
                 break
+        if r==1:
+            break   
     print('El id no se encuentra en el sistemas') if r==0 else ''
     core.updateFile('Inventario_Campus.json',srcData)
     

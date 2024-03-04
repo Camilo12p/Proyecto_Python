@@ -50,7 +50,7 @@ def menuPrincipal(srcData:dict):
                 sys.exit("Vuelva pronto, Bye Bye ")
 
 
-        except ValueError:
+        except  ValueError:
             print('El valor ingresado no es valido ')
 
             core.pauseScreen()
@@ -140,7 +140,7 @@ def menuZonas(srcData:dict):
         core.clearScreen()
         print(titulo)
         print(tabulate(menu,tablefmt='fancy_grid'))
-        op=int(input('Ingrese una opcion '))
+        op=v.validateInt('Ingrese una opcion ')
         if op==1:
             zo.CrearZona(srcData)
             core.pauseScreen()

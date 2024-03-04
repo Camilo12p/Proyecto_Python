@@ -12,33 +12,59 @@ def CrearAsignacion(srcData:dict):
         asignadoA=0
 
         if tipo==1:
-            
+            r=0
             asignadoA=asignarASujeto(srcData,'Ingrese el id de la persona a asignar')
-            añadirActivos(srcData,activos,id1)
-            asignacion={
-            'nroAsignacion':str(len(srcData.get('Asignacion'))+1).zfill(4),
-            'fechaAsignacion':datetime.strftime(datetime.now(), '%B %d %Y'),
-            'tipoAsignacion':'personal',
-            'asignadoA':asignadoA,
-            'activos':activos
-            }   
-            srcData.get('Asignacion').update({len(srcData.get('Asignacion'))+1:asignacion})
-            v.validatePrestamo(srcData,asignadoA)
+            
+            
+            for key,value in srcData.get('Asignacion').items():
+                activos.update(value['activos'])
+                añadirActivos(srcData,activos,id1)
+                if asignadoA == int(value['asignadoA']):
+                    value['activos'].update(activos)
+                    r=1
+                    break
+            if r==0:
+                añadirActivos(srcData,activos,id1)
+                asignacion={
+                'nroAsignacion':str(len(srcData.get('Asignacion'))+1).zfill(4),
+                'fechaAsignacion':datetime.strftime(datetime.now(), '%B %d %Y'),
+                'tipoAsignacion':'zona',
+                'asignadoA':asignadoA,
+                'activos':activos
+                }
+                srcData.get('Asignacion').update({len(srcData.get('Asignacion'))+1:asignacion})
             core.updateFile('Inventario_Campus.json',srcData)
 
 
         elif tipo==2:
+            r=0
+            print('Ingrese la zona a asignar')
+            zonas=[]
+            for key,value in srcData.get('Zonas').items():
+                print(f'{key}.',valuevalue['NombreZona'])
+                zonas.append(value['NombreZona'])
+
+            op=v.validateInt('Ingrese un valor')    
+            asignadoA=menu[op-1]
             
-            asignadoA=asignarASujeto(srcData,'Ingrese el Nro de zona de la zona a asignar')
-            añadirActivos(srcData,activos,id1)
-            asignacion={
-            'nroAsignacion':str(len(srcData.get('Asignacion'))+1).zfill(4),
-            'fechaAsignacion':datetime.strftime(datetime.now(), '%B %d %Y'),
-            'tipoAsignacion':'zona',
-            'asignadoA':asignadoA,
-            'activos':activos
-            }
-            srcData.get('Asignacion').update({len(srcData.get('Asignacion')):asignacion})
+            
+            for key,value in srcData.get('Asignacion').items():
+                activos.update(value['activos'])
+                añadirActivos(srcData,activos,id1)
+                if asignadoA == str(value['asignadoA']):
+                    value['activos'].update(activos)
+                    r=1
+                    break
+            if r==0:
+                añadirActivos(srcData,activos,id1)
+                asignacion={
+                'nroAsignacion':str(len(srcData.get('Asignacion'))+1).zfill(4),
+                'fechaAsignacion':datetime.strftime(datetime.now(), '%B %d %Y'),
+                'tipoAsignacion':'zona',
+                'asignadoA':asignadoA,
+                'activos':activos
+                }
+                srcData.get('Asignacion').update({len(srcData.get('Asignacion'))+1:asignacion})
             core.updateFile('Inventario_Campus.json',srcData)
         else:   
             print('Ingrese un valor valido')
@@ -57,14 +83,18 @@ def añadirActivos(srcData:dict,activos:dict, id1:int)->dict:
             activos.update({len(activos)+1:id2})
             updateHistorial(srcData,1,id1,id2)
             srcData.get('Activos')[id2]['estado']=1
-            op=v.validateStr('desea añadir mas activos\n.S(si)\nENTER para NO \n ')
+            op=v.validateExit('desea añadir mas activos\n.S(si)\nENTER para NO \n ')
             core.updateFile('Inventario_Campus.json',srcData)
-            if op.lower()=='':
+            
+            if op=='' or type(op)==None:
                 return
             elif op.lower()=='s' or op=='si':
                 añadirActivos(srcData,activos,id1)
             else:
                 añadirActivos(srcData,activos,id1)
+        else:
+            print('El activo no se puede asignar')
+            añadirActivos(srcData,activos,id1)
 
 
 def asignarASujeto(srcData:dict,name:str)->int:
@@ -87,7 +117,7 @@ def buscarAsignaciones(srcData:dict):
 def updateHistorial(srcData:dict,tipo:int,responsable:int,idActivo:str):
     historial={
         'NroHistorial':len(srcData.get('Activos').get(idActivo)['historial'])+1,
-        'fecha': datetime.strftime(datetime.now(), '%B' '%d' '%Y'),
+        'fecha': datetime.strftime(datetime.now(), '%B %d %Y'),
         'tipoMov':tipo,
         'idResponsable':responsable
     }
