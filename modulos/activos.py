@@ -3,7 +3,7 @@ import modulos.validation as v
 from tabulate import tabulate
 
 def DictActivos(srcData:dict):
-    CodCampus= input('Ingrese el codigo de campus del activo -->')
+    CodCampus= input('Ingrese el codigo de campus del activo -->').upper()
     if v.newRegister(CodCampus,'Activos'):
         return
     CodTransaccion=v.validateInt('Ingrese el codigo de transaccion del activo')
@@ -11,26 +11,27 @@ def DictActivos(srcData:dict):
     Marca=v.validateStr('Ingrese la marca del activo')
     Categoria=v.validateStr('Ingrese la categoria del activo')
     Tipo=v.validateStr('Ingrese el tipo del activo')
-    ValorUnitario=v.validateInt('Ingrese el valor unitario del activo')
+    ValorUnitario=v.validateFloat('Ingrese el valor unitario del activo')
     Proveedor=v.validateStr('Ingrese el proveedor del activo')
-    NroSerial=v.validateInt('Ingrese el numero serial del activo')
+    NroSerial=v.input('Ingrese el numero serial del activo')
     EmpresaResponsable=v.validateStr('Ingrese la empresa responsable del activo')
     Nombre=input('Ingrese el nombre completo del activo')
                             
     activo={
-        'CodTransaccion':CodTransaccion,
-        'Nroformulario':NroFormulario,
-        'Codcampus':CodCampus,
-        'Marca':Marca,
-        'Categoria':Categoria,
-        'Tipo':Tipo,
-        'ValorUnitario':ValorUnitario,
-        'Proveedor':Proveedor,
-        'Nroserial':NroSerial,
-        'EmpresaResponsable':EmpresaResponsable,
-        'Estado':0,
-        'Historial':{},
-        'Nombre':Nombre
+        'codTransaccion':CodTransaccion,
+        'nroformulario':NroFormulario,
+        'codcampus':CodCampus,
+        'nombre':Nombre,
+        'marca':Marca,
+        'categoria':Categoria,
+        'tipo':Tipo,
+        'valorUnitario':ValorUnitario,
+        'proveedor':Proveedor,
+        'nroserial':NroSerial,
+        'empresaResponsable':EmpresaResponsable,
+        'estado':0,
+        'historial':{}
+        
         }
     
 
@@ -38,7 +39,7 @@ def DictActivos(srcData:dict):
     core.updateFile('Inventario_Campus.json',srcData)
 
 def Editar(srcData:dict):
-    id=str(input('Ingrese el codigo de campus del activo a editar'))
+    id=str(input('Ingrese el codigo de campus del activo a editar')).upper()
     menu=[['1. Codigo de transaccion'],['2. Numero de formulario'],['4. Marca']['5. Categoria']['6. Tipo']['7. Valor unitario']['8. Proveedor']['9. Numero serial']['10. Empresa Resposable']]
     
     if id not in srcData.get('Activos'):
@@ -71,7 +72,7 @@ def Editar(srcData:dict):
             srcData.get('Activos').get(id)['Tipo']=v.validateStr('Ingrese el tipo de activo')
             isOption=False
         elif op==7:
-            srcData.get('Activos').get(id)['ValorUnitario']=v.validateInt('Ingrese el valor unitario')
+            srcData.get('Activos').get(id)['ValorUnitario']=v.validateFloat('Ingrese el valor unitario')
             isOption=False
         elif op==8:
             srcData.get('Activos').get(id)['Proveedor']=v.validateStr('Ingrese el nombre del proveedor')
@@ -92,7 +93,7 @@ def Editar(srcData:dict):
     core.updateFile('Inventario_Campus.json',srcData)
 
 def eliminar(srcData:dict):
-    id=str(input('Ingrese el activo a eliminar'))
+    id=str(input('Ingrese el activo a eliminar')).upper()
     if id not in srcData.get('Activos'):
             print('El id no se encuentra en el sistema')
             return 
@@ -100,7 +101,7 @@ def eliminar(srcData:dict):
     core.updateFile('Inventario_Campus.json',srcData)
 
 def buscar(srcData:dict):
-    id=str(input('Ingrese el activo a buscar'))
+    id=str(input('Ingrese el activo a buscar')).upper()
     if id not in srcData.get('Activos'):
             print('El id no se encuentra en el sistema')
             return 

@@ -17,9 +17,10 @@ def CrearAsignacion(srcData:dict):
             
             
             for key,value in srcData.get('Asignacion').items():
-                activos.update(value['activos'])
+                
                 añadirActivos(srcData,activos,id1)
                 if asignadoA == int(value['asignadoA']):
+                    activos.update(value['activos'])
                     value['activos'].update(activos)
                     r=1
                     break
@@ -41,17 +42,18 @@ def CrearAsignacion(srcData:dict):
             print('Ingrese la zona a asignar')
             zonas=[]
             for key,value in srcData.get('Zonas').items():
-                print(f'{key}.',valuevalue['NombreZona'])
+                print(f'{key}.',value['NombreZona'])
                 zonas.append(value['NombreZona'])
 
             op=v.validateInt('Ingrese un valor')    
-            asignadoA=menu[op-1]
+            asignadoA=zonas[op-1]
             
             
             for key,value in srcData.get('Asignacion').items():
-                activos.update(value['activos'])
+                
                 añadirActivos(srcData,activos,id1)
                 if asignadoA == str(value['asignadoA']):
+                    activos.update(value['activos'])
                     value['activos'].update(activos)
                     r=1
                     break

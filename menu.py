@@ -50,9 +50,11 @@ def menuPrincipal(srcData:dict):
                 sys.exit("Vuelva pronto, Bye Bye ")
 
 
-        except ValueError:
+        except EOFError:
             print('El valor ingresado no es valido ')
-
+            core.pauseScreen()
+        except KeyboardInterrupt:
+            print('Acabas de cancelar el programa')
             core.pauseScreen()
 
 def menuActivos(srcData:dict):
@@ -208,7 +210,7 @@ def menuReportes(srcData:dict):
         elif op==3:
             rp.ListarActivosBaja(srcData)
         elif op==4:
-            pass
+            rp.listarAsignacion(srcData)
         elif op==5:
             rp.ListarActivosHistorial(srcData)
         elif op==6:

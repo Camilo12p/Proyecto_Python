@@ -1,5 +1,5 @@
 import os 
-from modulos.coreFile import updateFile,readFile
+from modulos.coreFile import updateFile,readFile,clearScreen
 
 def validateInt(context:str):
     try:
@@ -11,13 +11,29 @@ def validateInt(context:str):
     except ValueError:
         return validateInt(context)
 
+def validateFloat(contex:str):
+    try:
+        num=float(input(context +' --> '))
+        if num>=0:
+            return num
+        else:
+            return validateInt(context)
+    except ValueError:
+        return validateInt(context)
 
 def validateStr(context:str):
-    n=str(input(context + ' --> '))
-    if n.isalpha():
-        return n
-    else:
-        return validateStr(context)
+    r=0
+    clearScreen()
+    n=str(input(context + ' --> ')).split(' ')
+    for item in n:
+        if item.isalpha():
+            n2=" ".join(n)
+            pass
+        else:
+            r=1
+            return validateStr(context)
+    if r==0:
+        return n2
 
 def validateExit(context:str):
     n=str(input(context + ' --> '))
@@ -27,6 +43,7 @@ def validateExit(context:str):
         return validateStr(context)
 
 def validateEmail(context:str):
+    clearScreen()
     e=input(context+ ' --> ')
     if e.isalnum():
         return validateEmail(context)

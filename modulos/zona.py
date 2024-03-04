@@ -21,13 +21,19 @@ def Editar(srcData:dict):
     id=v.validateStr('Ingrese el nombre de la zona a editar').capitalize()
     menu=[['1. Nombre de la zona'],['2. Total Capacidad de la zona']]
     id2=0
+
+    r=0
     for key,value in srcData.get('Zonas').items():
-        if id != value['NombreZona']:
-                print('El id no se encuentra en el sistema')
-                return
+        if id == value['NombreZona']:
+                id2=key
+                r=0
+                break
         else:
-            id2=key
-    
+            r=1
+    if r==1:
+        print('El id no se encuentra en el sistema')
+        return
+
     isOption=True
     while isOption:
 
@@ -36,7 +42,7 @@ def Editar(srcData:dict):
 
         
         if op == 1:
-            srcData.get('Zonas').get(id2)['NombreZona']=v.validateStr('Ingrese el nombre de la zona ')
+            srcData.get('Zonas').get(id2)['NombreZona']=v.validateStr('Ingrese el nombre de la zona ').capitalize()
             isOption=False
         elif op==2:
             srcData.get('Zonas').get(id2)['TotalCapacidad']=v.validateInt(' Ingrese la capacidad total')
@@ -48,25 +54,38 @@ def Editar(srcData:dict):
 
 def eliminar(srcData:dict):
     id2=0
-    id=str(input('Ingrese la zona a eliminar')).capitalize()
+    id=v.validateStr('Ingrese la zona a eliminar').capitalize()
+    r=0
     for key,value in srcData.get('Zonas').items():
-        if id != value['NombreZona']:
-                print('El id no se encuentra en el sistema')
-                return
+        if id == value['NombreZona']:
+                id2=key
+                r=0
+                break
         else:
-            id2=key
+            r=1
+
+    if r==1:
+        print('El id no se encuentra en el sistema')
+        return
     srcData.get('Zonas').pop(id2)
     core.updateFile('Inventario_Campus.json',srcData)
 
 def buscar(srcData:dict):
     id2=0
-    id=str(input('Ingrese la zona a buscar'))
+    id=v.validateStr('Ingrese la zona a buscar').capitalize()
+    r=0
     for key,value in srcData.get('Zonas').items():
-        if id != value['NombreZona']:
-                print('El id no se encuentra en el sistema')
-                return
+        if id == value['NombreZona']:
+                id2=key
+                r=0
+                break
+                
         else:
-            id2=key
+            
+            r=1
+    if r==1:
+        print('El id no se encuentra en el sistema')
+        return
     print()
     print('-------------------------------')
     

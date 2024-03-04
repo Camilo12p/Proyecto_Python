@@ -71,5 +71,29 @@ def ListarActivosHistorial(srcData:dict):
         print("El id no se encuentra registrado ")
         ListarActivosHistorial(srcData)
     
-        
-   
+def listarAsignacion(srcData:dict):
+    print('Que tipo de asignacion desea ver\n1.Personal\n2.Zonas\n')
+    op=v.validateInt('Ingrese una opcion')
+    if op==1:
+        id=v.validateInt('Ingrese el id de la persona')
+        for key,value in srcData.get('Asignacion').items():
+            if id == value['asignadoA']:
+                for key3,value3 in value['activos'].items():
+                    print(f'{key3} . {value3}')
+        core.pauseScreen()
+    elif op==2:
+        zonas=[]
+        for key,value in srcData.get('Zonas').items():
+            print(f'{key}.',value['NombreZona'])
+            zonas.append(value['NombreZona'])
+
+        op=v.validateInt('Ingrese un valor') 
+
+        for key,value in srcData.get('Asignacion').items():
+            if zonas[op-1] == (value['asignadoA']):
+                for key3,value3 in value['activos'].items():
+                    print(f'{key3} . {value3}')
+        core.pauseScreen()
+    else:
+        print('Ingrese un valor valido')
+        core.pauseScreen()
