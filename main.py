@@ -12,7 +12,7 @@ if __name__ == '__main__' :
         
     }
     core.checkFile('Inventario_Campus.json',Inventario_Campus)
-    r.readCsv(Inventario_Campus)
+    #r.readCsv(Inventario_Campus)
     m.menuPrincipal(Inventario_Campus)
 
 

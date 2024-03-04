@@ -50,7 +50,7 @@ def menuPrincipal(srcData:dict):
                 sys.exit("Vuelva pronto, Bye Bye ")
 
 
-        except ValueError:
+        except BufferError:
             print('El valor ingresado no es valido ')
 
             core.pauseScreen()
@@ -202,15 +202,15 @@ def menuReportes(srcData:dict):
         print(tabulate(menu,tablefmt='fancy_grid'))
         op=v.validateInt('Ingrese una opcion')
         if op==1:
-            pass
+            rp.ListarActivos(srcData)
         elif op==2:
-            pass
+            rp.ListarPorCategoria(srcData)
         elif op==3:
-            pass
+            rp.ListarActivosBaja(srcData)
         elif op==4:
             pass
         elif op==5:
-            pass
+            rp.ListarActivosHistorial(srcData)
         elif op==6:
             isOption=False
             menuPrincipal(srcData)
