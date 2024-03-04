@@ -21,7 +21,6 @@ def Editar(srcData:dict):
     id=v.validateStr('Ingrese el nombre de la zona a editar').capitalize()
     menu=[['1. Nombre de la zona'],['2. Total Capacidad de la zona']]
     id2=0
-
     r=0
     for key,value in srcData.get('Zonas').items():
         if id == value['NombreZona']:
@@ -38,7 +37,7 @@ def Editar(srcData:dict):
     while isOption:
 
         print(tabulate(menu,tablefmt='fancy_grid'))
-        op=v.validateInt('Seleccione una opcion valida')
+        op=v.validateOpciones('Ingrese una opcion',tabulate(menu,tablefmt='fancy_grid'))
 
         
         if op == 1:

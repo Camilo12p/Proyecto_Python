@@ -30,9 +30,7 @@ def menuPrincipal(srcData:dict):
     while isOption:   
         try:
             core.clearScreen()
-            print(titulo)
-            print(tabulate(menu,tablefmt='fancy_grid'))
-            op=v.validateInt('Ingrese una opcion')
+            op=v.validateOpciones('Ingrese una opcion',titulo,tabulate(menu,tablefmt='fancy_grid'))
             if op==1:
                 menuActivos(srcData)
             elif op==2:
@@ -72,9 +70,7 @@ def menuActivos(srcData:dict):
     isOption=True
     while isOption: 
         core.clearScreen()
-        print(titulo)
-        print(tabulate(menu,tablefmt='fancy_grid'))
-        op=int(input('Ingrese una opcion '))
+        op=v.validateOpciones('Ingrese una opcion',titulo,tabulate(menu,tablefmt='fancy_grid'))
         if op==1:
             ac.DictActivos(srcData)
             core.pauseScreen()
@@ -106,9 +102,7 @@ def menuPesonal(srcData:dict):
     isOption=True
     while isOption: 
         core.clearScreen()
-        print(titulo)
-        print(tabulate(menu,tablefmt='fancy_grid'))
-        op=v.validateInt('Ingrese una opcion')
+        op=v.validateOpciones('Ingrese una opcion',titulo,tabulate(menu,tablefmt='fancy_grid'))
         if op==1:
             p.Agregar(srcData)
             core.pauseScreen()
@@ -140,9 +134,7 @@ def menuZonas(srcData:dict):
     isOption=True
     while isOption: 
         core.clearScreen()
-        print(titulo)
-        print(tabulate(menu,tablefmt='fancy_grid'))
-        op=v.validateInt('Ingrese una opcion ')
+        op=v.validateOpciones('Ingrese una opcion',titulo,tabulate(menu,tablefmt='fancy_grid'))
         if op==1:
             zo.CrearZona(srcData)
             core.pauseScreen()
@@ -176,14 +168,12 @@ def menuAsignacion(srcData:dict):
     isOption=True
     while isOption: 
         core.clearScreen()
-        print(titulo)
-        print(tabulate(menu,tablefmt='fancy_grid'))
-        op=v.validateInt('Ingrese una opcion --> ')
+        op=v.validateOpciones('Ingrese una opcion',titulo,tabulate(menu,tablefmt='fancy_grid'))
         if op==1:
             A.CrearAsignacion(srcData)
             core.pauseScreen()
         elif op==2:
-            A.buscarAsignaciones(srcData)
+            rp.listarAsignacion(srcData)
             core.pauseScreen()
         elif op==3:
             isOption=False
@@ -200,9 +190,7 @@ def menuReportes(srcData:dict):
     isOption=True
     while isOption:
         core.clearScreen()
-        print(titulo)
-        print(tabulate(menu,tablefmt='fancy_grid'))
-        op=v.validateInt('Ingrese una opcion')
+        op=v.validateOpciones('Ingrese una opcion',titulo,tabulate(menu,tablefmt='fancy_grid'))
         if op==1:
             rp.ListarActivos(srcData)
         elif op==2:
@@ -233,9 +221,7 @@ def menuMovimientos(srcData:dict):
     isOption=True
     while isOption: 
         core.clearScreen()
-        print(titulo)
-        print(tabulate(menu,tablefmt='fancy_grid'))
-        op=v.validateInt('Ingrese una opcion')
+        op=v.validateOpciones('Ingrese una opcion',titulo,tabulate(menu,tablefmt='fancy_grid'))
         if op==1:
             m.retornos(srcData)
             core.pauseScreen()

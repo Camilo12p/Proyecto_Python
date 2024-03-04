@@ -40,7 +40,7 @@ def readCsv(Inventario_Campus:dict):
                 'marca':'Compumax',
                 'categoria':'Equipo de computo',
                 'tipo':categoria[0],
-                'valor unitario':valor,
+                'valorUnitario':valor,
                 'proveedor':row[7],
                 'nroserial':row[2],
                 'empresaresponsable':row[8],

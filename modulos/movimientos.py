@@ -83,9 +83,9 @@ def enviarGarantia(srcData:dict):
     else:
         print('Usted no hace parte del personal de campus no tiene permiso de hacer cambios') 
 def cambiar(srcData:dict, id:str)->bool:
-    print('Que tipo de rasignacion desea?')
-    print ('1.Personal\n2.Zona\n')
-    tipo=v.validateInt('Ingrese un valor --> ')
+    titulo='Que tipo de rasignacion desea?'
+    titulo2='1.Personal\n2.Zona\n'
+    tipo=v.validateOpciones('Ingrese una opcion',titulo,titulo2)
     activos={}
     asignadoA=0
 
@@ -120,5 +120,3 @@ def cambiar(srcData:dict, id:str)->bool:
     else:   
         print('Ingrese un valor valido')
         return 
-
-    

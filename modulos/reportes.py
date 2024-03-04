@@ -72,8 +72,8 @@ def ListarActivosHistorial(srcData:dict):
         ListarActivosHistorial(srcData)
     
 def listarAsignacion(srcData:dict):
-    print('Que tipo de asignacion desea ver\n1.Personal\n2.Zonas\n')
-    op=v.validateInt('Ingrese una opcion')
+    titulo='Que tipo de asignacion desea ver\n1.Personal\n2.Zonas\n'
+    op=v.validateOpciones('Ingrese una opcion',titulo)
     if op==1:
         id=v.validateInt('Ingrese el id de la persona')
         for key,value in srcData.get('Asignacion').items():
@@ -87,7 +87,7 @@ def listarAsignacion(srcData:dict):
             print(f'{key}.',value['NombreZona'])
             zonas.append(value['NombreZona'])
 
-        op=v.validateInt('Ingrese un valor') 
+        op=v.validateOpciones('Ingrese una opcion')
 
         for key,value in srcData.get('Asignacion').items():
             if zonas[op-1] == (value['asignadoA']):

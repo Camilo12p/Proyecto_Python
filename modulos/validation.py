@@ -2,24 +2,25 @@ import os
 from modulos.coreFile import updateFile,readFile,clearScreen
 
 def validateInt(context:str):
+    clearScreen()
     try:
         num=int(input(context +' --> '))
-        if num>=0:
+        if num>=0 and num<=10000000000000:
             return num
         else:
             return validateInt(context)
     except ValueError:
         return validateInt(context)
 
-def validateFloat(contex:str):
+def validateFloat(context:str):
     try:
         num=float(input(context +' --> '))
-        if num>=0:
+        if num>=0 and num<=10000000000000:
             return num
         else:
-            return validateInt(context)
+            return validateFloat(context)
     except ValueError:
-        return validateInt(context)
+        return validateFloat(context)
 
 def validateStr(context:str):
     r=0
@@ -40,15 +41,16 @@ def validateExit(context:str):
     if n.isalpha() or n=='':
         return n
     else:
-        return validateStr(context)
+        return validateExit(context)
 
 def validateEmail(context:str):
     clearScreen()
     e=input(context+ ' --> ')
     if e.isalnum():
-        return validateEmail(context)
+        if len(e.split())<=2:
+            return validateEmail(context)
     else:
-        return e
+        return ''.join(e)
 
 def validatePrestamo(srcData:dict,id:int):
     for key,value in srcData.get('Asignacion').items():
@@ -83,3 +85,32 @@ def newRegisterZona(id:str,tipo:str):
         if id in value['NombreZona']:
             print(f'El {tipo} ya se encuentra registrado')
             return True
+
+def codcampus(context:str):
+    clearScreen()
+    nombre=str(input(f'{context} --> ')).upper()
+    if len(nombre.split())<=15 and nombre.isalnum():
+        return "".join(nombre)
+    else:
+        return codcampus(context)
+
+def validateOpciones(context:str,titulo='',titulo2=''):
+    clearScreen()
+    print(titulo)
+    print(titulo2)
+    try:
+        num=int(input(context +' --> '))
+        if num>=0 and num<=15:
+            return num
+        else:
+            return validateOpciones(context,titulo,titulo2)
+    except ValueError:
+        return validateOpciones(context,titulo,titulo2)
+
+def nombreActivo(context:str):
+    n=str(input(f'{context} --> '))
+    if len(n.split())<=2 and n.isalnum():
+        return "".join(n)
+        
+    else: 
+        return nombreActivo(context)

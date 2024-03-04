@@ -27,12 +27,24 @@
         "1005654144": {
             "id": 1005654144,
             "name": "wilmer camilo",
-            "email": "iheihehiw@deod",
+            "email": "encaos@hotmail.com",
             "telefonos": {
                 "movil": 12343,
                 "casa": 21323,
                 "personal": 2324,
                 "oficina": 2424
+            },
+            "Prestamo": false
+        },
+        "12442": {
+            "id": 12442,
+            "name": "wilmer camilo pati\u00f1o",
+            "email": "@",
+            "telefonos": {
+                "movil": 21424,
+                "casa": 24142,
+                "personal": 24142,
+                "oficina": 242142
             },
             "Prestamo": false
         }
@@ -7485,33 +7497,20 @@
             "estado": 0,
             "historial": {}
         },
-        "MON0123": {
-            "codTransaccion": "327",
-            "nroformulario": "966217823",
-            "codcampus": "MON0123",
-            "nombre": "Monitor - Bodg50 - 4051 -900 - 0005R5",
-            "marca": "Compumax",
+        "CP0500": {
+            "codTransaccion": 1242,
+            "nroformulario": 2124,
+            "codcampus": "CP0500",
+            "nombre": "cp-345421",
+            "marca": "lg",
             "categoria": "Equipo de computo",
-            "tipo": "Monitor ",
-            "valor unitario": 500,
-            "proveedor": "Compumax Computer ",
-            "nroserial": "COM2024CM21070575",
-            "empresaresponsable": "Campuslands",
-            "estado": 0,
-            "historial": {}
-        },
-        "TE0123": {
-            "codTransaccion": "327",
-            "nroformulario": "966217823",
-            "codcampus": "TE0123",
-            "nombre": "Teclado - Bodg50 - 4051 -900 - 0005R5",
-            "marca": "Compumax",
-            "categoria": "Equipo de computo",
-            "tipo": "Teclado ",
-            "valor unitario": 250,
-            "proveedor": "Compumax Computer ",
-            "nroserial": "CK440U-10656",
-            "empresaresponsable": "Campuslands",
+            "tipo": [
+                "CPU"
+            ],
+            "valorUnitario": 500.0,
+            "proveedor": "compumax",
+            "nroserial": "sn221e3",
+            "empresaResponsable": "campus",
             "estado": 0,
             "historial": {}
         }

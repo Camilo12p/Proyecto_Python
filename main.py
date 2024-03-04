@@ -17,7 +17,6 @@ if __name__ == '__main__' :
         'Zonas':{},
         'Asignacion':{},
         'Activos':{}
-        
     }
     core.checkFile('Inventario_Campus.json',Inventario_Campus)
     # .readCsv(Inventario_Campus)

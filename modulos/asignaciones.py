@@ -5,9 +5,9 @@ from datetime import datetime
 def CrearAsignacion(srcData:dict):
     id1=v.validateInt('Ingrese su id')
     if str(id1) in srcData.get('Personas'):
-        print('Que tipo de asiganacion desea crear?')
-        print ('1.Personal\n2.Zona\n')
-        tipo=v.validateInt('Ingrese un valor')
+        titulo='Que tipo de asiganacion desea crear?'
+        titulo2='1.Personal\n2.Zona\n'
+        tipo=v.validateOpciones('Ingrese una opcion',titulo,titulo2)
         activos={}
         asignadoA=0
 
@@ -45,7 +45,7 @@ def CrearAsignacion(srcData:dict):
                 print(f'{key}.',value['NombreZona'])
                 zonas.append(value['NombreZona'])
 
-            op=v.validateInt('Ingrese un valor')    
+            op=v.validateOpciones('Ingrese una opcion') 
             asignadoA=zonas[op-1]
             
             
@@ -108,13 +108,13 @@ def asignarASujeto(srcData:dict,name:str)->int:
         return int(id)
 
 
-def buscarAsignaciones(srcData:dict):
-    id=str(v.validateInt('Ingrese el numero de la asignacion'))
-    if (id) in srcData.get('Asignacion'):
-        for key,value in srcData.get('Asignacion')[id].items():
-            print(f'{key} : {value}')
-    else:
-        print('EL id no se enuentra')
+# def buscarAsignaciones(srcData:dict):
+#     id=str(v.validateInt('Ingrese el numero de la asignacion'))
+#     if (id) in srcData.get('Asignacion'):
+#         for key,value in srcData.get('Asignacion')[id].items():
+#             print(f'{key} : {value}')
+#     else:
+#         print('EL id no se enuentra')
 
 def updateHistorial(srcData:dict,tipo:int,responsable:int,idActivo:str):
     historial={

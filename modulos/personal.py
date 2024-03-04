@@ -42,9 +42,7 @@ def Editar(srcData:dict):
     while isOption:
 
         print(tabulate(menu,tablefmt='fancy_grid'))
-        op=v.validateInt('Seleccione una opcion --> ')
-
-        
+        op=v.validateOpciones('Ingrese una opcion',tabulate(menu,tablefmt='fancy_grid'))        
         if op == 1:
             srcData.get('Personas').get(id)['name']=v.validateStr('Ingrese el nombre')
             isOption=False
@@ -53,7 +51,7 @@ def Editar(srcData:dict):
             isOption=False
         elif op == 3:
             print(tabulate(menu2,tablefmt='fancy_grid'))
-            op2=v.validateInt('Seleccione una opcion --> ')
+            op2=v.validateOpciones('Ingrese una opcion',tabulate(menu2,tablefmt='fancy_grid'))
             if op2==1:
                 srcData.get('Personas').get(id)['telefonos']['movil']=v.validateInt('Ingrese el movil')
                 isOption=False
