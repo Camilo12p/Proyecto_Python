@@ -1,13 +1,14 @@
+import sys
+from tabulate import tabulate
 import modulos.activos as ac
 import modulos.zona as zo
-import sys
-import os
+import modulos.reportes as rp
 import modulos.coreFile as core
 import modulos.personal as p
 import modulos.asignaciones as A
 import modulos.movimientos as m
 import modulos.validation as v
-from tabulate import tabulate
+
 
 def menuPrincipal(srcData:dict):
     # def wrapper(func):  
@@ -16,10 +17,10 @@ def menuPrincipal(srcData:dict):
 
     titulo='''
 
-         _______________________________
-        |                               |    
-        |  Menu de asignacion de Campus |
-        |_______________________________|
+         __________________________________________
+        |                                          |    
+        |   SISTEMA G&C DE INVENTARIO CAMPUSLANDS  |
+        |__________________________________________|
 
     '''
 
@@ -42,11 +43,11 @@ def menuPrincipal(srcData:dict):
             elif op==4:
                 menuAsignacion(srcData)
             elif op==5:
-                pass
+                menuReportes(srcData)
             elif op==6:
                 menuMovimientos(srcData)
             elif op==7:
-                sys.exit("Vuelva pronto, Bye Bye")
+                sys.exit("Vuelva pronto, Bye Bye ")
 
 
         except ValueError:
@@ -88,40 +89,6 @@ def menuActivos(srcData:dict):
             isOption=False
             menuPrincipal(srcData)
 
-def menuZonas(srcData:dict):
-    titulo='''
-
-         _________________________________
-        |                                 |    
-        |  Menu Administracion de zonas   |
-        |_________________________________|
-
-    '''
-
-    menu=[['1. Agregar'],['2. Editar'],['3. Eliminar'],['4. Buscar'],['5. Regresar al menu']]
-    
-    isOption=True
-    while isOption: 
-        core.clearScreen()
-        print(titulo)
-        print(tabulate(menu,tablefmt='fancy_grid'))
-        op=int(input('Ingrese una opcion '))
-        if op==1:
-            zo.CrearZona(srcData)
-            core.pauseScreen()
-        elif op==2:
-            zo.Editar(srcData)
-            core.pauseScreen()
-        elif op==3:
-            zo.eliminar(srcData)
-            core.pauseScreen()
-        elif op==4:
-            zo.buscar(srcData)
-            core.pauseScreen()
-        elif op==5:
-            isOption=False
-            menuPrincipal(srcData)
-
 def menuPesonal(srcData:dict):
     titulo='''
 
@@ -156,6 +123,42 @@ def menuPesonal(srcData:dict):
             isOption=False
             menuPrincipal(srcData)
 
+def menuZonas(srcData:dict):
+    titulo='''
+
+         _________________________________
+        |                                 |    
+        |  Menu Administracion de zonas   |
+        |_________________________________|
+
+    '''
+
+    menu=[['1. Agregar'],['2. Editar'],['3. Eliminar'],['4. Buscar'],['5. Regresar al menu']]
+    
+    isOption=True
+    while isOption: 
+        core.clearScreen()
+        print(titulo)
+        print(tabulate(menu,tablefmt='fancy_grid'))
+        op=int(input('Ingrese una opcion '))
+        if op==1:
+            zo.CrearZona(srcData)
+            core.pauseScreen()
+        elif op==2:
+            zo.Editar(srcData)
+            core.pauseScreen()
+        elif op==3:
+            zo.eliminar(srcData)
+            core.pauseScreen()
+        elif op==4:
+            zo.buscar(srcData)
+            core.pauseScreen()
+        elif op==5:
+            isOption=False
+            menuPrincipal(srcData)
+
+
+
 def menuAsignacion(srcData:dict):
     titulo='''
 
@@ -183,8 +186,37 @@ def menuAsignacion(srcData:dict):
         elif op==3:
             isOption=False
             menuPrincipal(srcData)
-
-
+def menuReportes(srcData:dict):
+    titulo="""
+         ____________________________
+        |                            |    
+        |      Menu de reportes      |
+        |____________________________|
+    
+    """
+    menu=[['1. Listar todo los activos '],['2. Listar activos por categoria '],['3. Listar activos dados de baja por daños '],['4. Listar activos y asignacion'],['5. Listar historial de mov del activo'],['6. Regresar al menu principal']]
+    isOption=True
+    while isOption:
+        core.clearScreen()
+        print(titulo)
+        print(tabulate(menu,tablefmt='fancy_grid'))
+        op=v.validateInt('Ingrese una opcion')
+        if op==1:
+            pass
+        elif op==2:
+            pass
+        elif op==3:
+            pass
+        elif op==4:
+            pass
+        elif op==5:
+            pass
+        elif op==6:
+            isOption=False
+            menuPrincipal(srcData)
+            
+    
+    
 def menuMovimientos(srcData:dict):
     titulo='''
 
@@ -196,7 +228,6 @@ def menuMovimientos(srcData:dict):
     '''
 
     menu=[['1. Retornos de Activos'],['2. Dar de baja activo'],['3. Cambiar asignacion de activo'],['4. Enviar a garantia activo'],['5. Regresar a menu']]
-    
     isOption=True
     while isOption: 
         core.clearScreen()
