@@ -76,7 +76,8 @@ def CrearAsignacion():
             
 
 def añadirActivos(srcData:dict,activos:dict, id1:int)->dict:
-    
+    srcData={}
+    srcData.update(core.readFile('Inventario_Campus.json'))
     id2=input('Ingrese el Nro de campus del activo a ingresar --> ')  #validar el id como se vaya a llamar en el dictionario activo
     if id2 not in srcData.get('Activos'):
         print('El id no se encuentra en el sistema')

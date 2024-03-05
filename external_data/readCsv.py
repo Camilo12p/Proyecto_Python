@@ -1,9 +1,9 @@
 from csv import reader
-from modulos.coreFile import updateFile
+import modulos.coreFile as core
 
 data=[]
 
-def readCsv(Inventario_Campus:dict):
+def readCsv(Inventario_Campus:dict)->dict:
     valorUnitario=[1000,2000,3000]
     cantidad=[1,1,1,1]   #[teclado,monitor,cpu,mouse]
     
@@ -48,4 +48,4 @@ def readCsv(Inventario_Campus:dict):
                 'historial':{}
             }
             Inventario_Campus.get('Activos').update({id:activo})
-        updateFile('Inventario_Campus.json',Inventario_Campus)
+        return Inventario_Campus

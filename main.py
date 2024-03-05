@@ -1,7 +1,7 @@
 import menu as m
 import os
 import modulos.coreFile as core 
-import external_data.readCsv as r1
+
 
 
 if __name__ == '__main__' :
@@ -19,7 +19,7 @@ if __name__ == '__main__' :
         'Activos':{}
     }
     core.checkFile('Inventario_Campus.json',Inventario_Campus)
-    # .readCsv(Inventario_Campus)
+    
     m.menuPrincipal(Inventario_Campus)
 
 
