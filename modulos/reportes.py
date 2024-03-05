@@ -2,7 +2,7 @@ import modulos.coreFile as core
 import modulos.validation as v
 from tabulate import tabulate
 
-
+#Esta es la funcion para poder mostrar los activos con su respectiva info
 def ListarActivos():
     srcData={}
     srcData.update(core.readFile('Inventario_Campus.json'))
@@ -12,7 +12,7 @@ def ListarActivos():
     headers = ["codcampus","nombre","categoria","tipo","estado"]
     print(tabulate(Activos,headers=headers, tablefmt="fancy_grid"))
     core.pauseScreen()
-
+#Esta es la funcion par listar los activos pero por categoria, ya sea equipo de computo, electrodomestico o juego
 def ListarPorCategoria():
     srcData={}
     srcData.update(core.readFile('Inventario_Campus.json'))
@@ -50,7 +50,7 @@ def ListarActivosCategoria(categoria:str):
     headers = ["codcampus","nombre","categoria","tipo","estado"]
     print(tabulate(Activos,headers=headers, tablefmt="fancy_grid"))
     core.clearScreen()
-    
+#Aqui se muestran los activos dados de baja por no funcionar
 def ListarActivosBaja():
     srcData={}
     srcData.update(core.readFile('Inventario_Campus.json'))
@@ -62,7 +62,7 @@ def ListarActivosBaja():
     core.clearScreen()
     print(tabulate(Activos,headers=headers, tablefmt="fancy_grid"))
     core.pauseScreen()
-
+#Aqui se puede ver el historial de movimientos del activo
 def ListarActivosHistorial():
     srcData={}
     srcData.update(core.readFile('Inventario_Campus.json'))
@@ -80,7 +80,7 @@ def ListarActivosHistorial():
     except AttributeError:
         print("El id no se encuentra registrado ")
         ListarActivosHistorial(srcData)
-    
+#Aqui se muestran todas las asignaciones de un activo    
 def listarAsignacion():
     srcData={}
     srcData.update(core.readFile('Inventario_Campus.json'))

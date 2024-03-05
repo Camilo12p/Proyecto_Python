@@ -1,6 +1,7 @@
+#Este es el modulo para las validaciones utilizadas en todo el programa
 import os 
 from modulos.coreFile import updateFile,readFile,clearScreen
-
+#esta es la validacion para validar que la informacion ingresada por el usuario sa de solo numeros 
 def validateInt(context:str):
     clearScreen()
     try:
@@ -11,7 +12,7 @@ def validateInt(context:str):
             return validateInt(context)
     except ValueError:
         return validateInt(context)
-
+#esta es la validacion para que los valores ingresados los compare con numeros flotantes o decimales
 def validateFloat(context:str):
     try:
         num=float(input(context +' --> '))
@@ -21,7 +22,7 @@ def validateFloat(context:str):
             return validateFloat(context)
     except ValueError:
         return validateFloat(context)
-
+#Esta es la validacion para solo texto
 def validateStr(context:str):
     r=0
     clearScreen()
@@ -35,14 +36,14 @@ def validateStr(context:str):
             return validateStr(context)
     if r==0:
         return n2
-
+#esta es la validacion para salir de la ejecucion
 def validateExit(context:str):
     n=str(input(context + ' --> '))
     if n.isalpha() or n=='':
         return n
     else:
         return validateExit(context)
-
+#esta es la validacion para que cuando el usuario ingrese un correo, contenga @ para que cuente como email
 def validateEmail(context:str):
     clearScreen()
     e=input(context+ ' --> ')
@@ -51,7 +52,7 @@ def validateEmail(context:str):
             return validateEmail(context)
     else:
         return ''.join(e)
-
+#esta es la validacion para saber si un activo ya esta en prestamo a un personal
 def validatePrestamo(srcData:dict,id:int):
     srcData.update(readFile('Inventario_Campus.json'))
     for key,value in srcData.get('Asignacion').items():
@@ -63,7 +64,7 @@ def validatePrestamo(srcData:dict,id:int):
 
     updateFile('Inventario_Campus.json',srcData)
 
-
+#aqui se valida si la asignacion es valida
 def validateAsignacion(srcData:dict):
     for key,value in srcData.get('Asignacion').items():
         if len(value['activos']) ==0:
@@ -71,14 +72,14 @@ def validateAsignacion(srcData:dict):
             break
     updateFile('Inventario_Campus.json',srcData)
 
-
+#aqui se valida si el id esta registrado o no
 def newRegister(id:str,tipo:str):
     data={}
     data.update(readFile('Inventario_Campus.json'))
     if id in data.get(tipo):
         print(f'El {tipo} ya se encuentra registrado')
         return True
-
+#esta es la validacion para saber si una zona esta o no registrada
 def newRegisterZona(id:str,tipo:str):
     data={}
     data.update(readFile('Inventario_Campus.json'))

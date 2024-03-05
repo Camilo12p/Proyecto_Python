@@ -1,7 +1,7 @@
 import modulos.coreFile as core
 import modulos.validation as v
 from datetime import datetime
-
+#Esta es la funcion para crear un tipo de asignacion de activo
 def CrearAsignacion():
     srcData={}
     srcData.update(core.readFile('Inventario_Campus.json'))
@@ -74,7 +74,7 @@ def CrearAsignacion():
     else:
         print('Usted no hace parte del personal de campus no tiene permiso de hacer cambios') 
             
-
+#En esta seccion esta la funcion para añadir un activo
 def añadirActivos(srcData:dict,activos:dict, id1:int)->dict:
     srcData={}
     srcData.update(core.readFile('Inventario_Campus.json'))

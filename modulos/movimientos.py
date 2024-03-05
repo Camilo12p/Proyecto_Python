@@ -26,9 +26,9 @@ def retornos():
 def darBaja():
     srcData={}
     srcData.update(core.readFile('Inventario_Campus.json'))
-    id1=v.validateInt('Ingrese su id')
+    id1=v.validateInt('Ingrese su id')    #aqui esta validando que el id ingresado esta dentro de personas
     if str(id1) in srcData.get('Personas'):
-        id=str(input('Ingrese el activo a dar de baja --> ')).upper()
+        id=str(input('Ingrese el activo a dar de baja --> ')).upper() #si el id esta pasa a mostrar el mensaje de ingrese el activo a dar de baja
         for key, value in srcData.get('Asignacion').items():
             for key2,value2 in value['activos'].items():
                 if id in value2:

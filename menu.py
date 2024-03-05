@@ -1,3 +1,4 @@
+#Este es el modulo para la creacion de los menus
 import sys
 from tabulate import tabulate
 import modulos.activos as ac
@@ -9,7 +10,7 @@ import modulos.asignaciones as A
 import modulos.movimientos as m
 import modulos.validation as v
 
-
+#Este es el menu principal
 def menuPrincipal(srcData:dict):
     # def wrapper(func):  
     #     func
@@ -54,7 +55,7 @@ def menuPrincipal(srcData:dict):
         except KeyboardInterrupt:
             print('Acabas de cancelar el programa')
             core.pauseScreen()
-
+#Este es el menu para la opcion Nro 1 que es la de activos
 def menuActivos(srcData:dict):
     titulo='''
 
@@ -86,7 +87,7 @@ def menuActivos(srcData:dict):
         elif op==5:
             isOption=False
             menuPrincipal(srcData)
-
+#Este es el menu para la creacion de personal que corresponde a la opcion Nro 2
 def menuPesonal(srcData:dict):
     titulo='''
 
@@ -118,7 +119,7 @@ def menuPesonal(srcData:dict):
         elif op==5:
             isOption=False
             menuPrincipal(srcData)
-
+#Este es el menu para zonas, ya sea para crear, editar, eliminar que corresponde a la opcion Nro 3
 def menuZonas(srcData:dict):
     titulo='''
 
@@ -152,7 +153,7 @@ def menuZonas(srcData:dict):
             menuPrincipal(srcData)
 
 
-
+#Este es el menu para las asignaciones de activos o equipos 
 def menuAsignacion(srcData:dict):
     titulo='''
 
@@ -178,6 +179,7 @@ def menuAsignacion(srcData:dict):
         elif op==3:
             isOption=False
             menuPrincipal(srcData)
+#Este es el menu para generar los diferentes reportes, que son listar activos, listar activos por categoria, listar las asignaciones, etc            
 def menuReportes(srcData:dict):
     titulo="""
          ____________________________
@@ -206,7 +208,7 @@ def menuReportes(srcData:dict):
             menuPrincipal(srcData)
             
     
-    
+#Este es el menu para ver los diferentes movimientos de un activo    
 def menuMovimientos(srcData:dict):
     titulo='''
 

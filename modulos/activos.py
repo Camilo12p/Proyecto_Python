@@ -1,25 +1,28 @@
+#En este modulo en el que se definen los tipos de activos
+
 import modulos.coreFile as core
 import modulos.validation as v
 from tabulate import tabulate
-
+#Aqui se hace la funcion de un tipo de activo
 def asignartipo()->str:
     core.clearScreen()
     titulo='Seleccione el tipo de activo: '
     tipos=['Teclado','Mouse','Monitor','CPU']
     titulo2=[['1. Teclado'],['2. Mouse'],['3. Monitor'],['4. CPU']]
-    print(tabulate(tipos,tablefmt='fancy_grid'))
-    op=v.validateOpciones('Ingrese una opcion',titulo,tabulate(titulo2,tablefmt='fancy_grid'))
-    if op>0 and op<4:
+    print(tabulate(tipos,tablefmt='fancy_grid'))   #aqui se muestra en la consola las diferentes opciones
+    op=v.validateOpciones('Ingrese una opcion',titulo,tabulate(titulo2,tablefmt='fancy_grid'))   # Y aqui el programa valida que la opcion este dentro de las selecciones 
+    if op>0 and op<4:            
         return tipos[op-1]
     else: 
         return asignartipo()
-
+#An esta funcion se asigna la informacion del activo
 def DictActivos():
     srcData={}
     srcData.update(core.readFile('Inventario_Campus.json'))
     CodCampus= v.codcampus('Ingrese el codigo de campus')
     if v.newRegister(CodCampus,'Activos'):
         return
+    #En esta seccion se piden los valores y se validan para que no ocurran errores y se pueda almacenar la informacion requerida de una mejor manera
     CodTransaccion=v.validateInt('Ingrese el codigo de transaccion del activo')
     NroFormulario=v.validateInt('Ingrese el Nro de formulario del activo')
     Marca=v.validateStr('Ingrese la marca del activo')
@@ -29,7 +32,7 @@ def DictActivos():
     NroSerial=v.nombreActivo('Ingrese el numero serial del activo')
     EmpresaResponsable=v.validateStr('Ingrese la empresa responsable del activo')
     Nombre=input('Ingrese el nombre completo del activo')
-                            
+    #Este es el diccionario que contiene la informacion sobre un activo                  
     activo={
         'codTransaccion':CodTransaccion,
         'nroformulario':NroFormulario,
@@ -50,7 +53,7 @@ def DictActivos():
 
     srcData.get('Activos').update({CodCampus:activo})
     core.updateFile('Inventario_Campus.json',srcData)
-
+#Aqui se define la funcion de editar la informacion relacionada con un activo
 def Editar():
     srcData={}
     srcData.update(core.readFile('Inventario_Campus.json'))
@@ -66,7 +69,7 @@ def Editar():
 
         print(tabulate(menu,tablefmt='fancy_grid'))
         op=v.validateOpciones('Ingrese una opcion',tabulate(menu,tablefmt='fancy_grid'))
-
+        #Aqui se valida la opcion que escogio el usuario y se muestra un texto con la informacion que se requiere
         
         if op == 1:
             srcData.get('Activos').get(id)['codTransaccion']=v.validateInt('Ingrese el Codigo de transaccion del activo a editar ')
@@ -99,7 +102,7 @@ def Editar():
             print('Ingrese un valor valido')
 
     core.updateFile('Inventario_Campus.json',srcData)
-
+#Esta es la funcion para eliminar un activo ya creado   
 def eliminar():
     srcData={}
     srcData.update(core.readFile('Inventario_Campus.json'))
@@ -109,7 +112,7 @@ def eliminar():
             return 
     srcData.get('Activos').pop(id)
     core.updateFile('Inventario_Campus.json',srcData)
-
+#Esta es la funcion para buscar algun activo por medio de un id
 def buscar():
     srcData={}
     srcData.update(core.readFile('Inventario_Campus.json'))

@@ -1,7 +1,8 @@
+#Este es el modulo para la creacion, asignacion, edicion, eliminacion y busqueda de zonas disponibles
 import modulos.coreFile as core
 import modulos.validation as v
 from tabulate import tabulate
-
+#esta es la funcion para crear una zona
 def CrearZona():
     srcData={}
     srcData.update(core.readFile('Inventario_Campus.json'))
@@ -18,7 +19,7 @@ def CrearZona():
 
     srcData.get('Zonas').update({nrozona:Zona})
     core.updateFile('Inventario_Campus.json',srcData)
-
+#aqui se edita una de las zonas ya existentes
 def Editar():
     srcData={}
     srcData.update(core.readFile('Inventario_Campus.json'))
@@ -54,7 +55,7 @@ def Editar():
             print('Ingrese un valor valido')
 
         core.updateFile('Inventario_Campus.json',srcData)
-
+#aqui se elimina alguna de las zonas ya existentes
 def eliminar():
     srcData={}
     srcData.update(core.readFile('Inventario_Campus.json'))
@@ -74,7 +75,7 @@ def eliminar():
         return
     srcData.get('Zonas').pop(id2)
     core.updateFile('Inventario_Campus.json',srcData)
-
+#con esta funcion se busca una de las zonas ya creadas
 def buscar():
     srcData={}
     srcData.update(core.readFile('Inventario_Campus.json'))

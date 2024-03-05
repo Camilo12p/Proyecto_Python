@@ -27,11 +27,11 @@ def updateFile(*params):    #actualiza el json
         json.dump(params[1],bw,indent=4)
     
 
-def clearScreen():
-    if os.sys.platform=='linux' or os.sys.platform=='darwin':
+def clearScreen():     #limpia la pantalla para una mejor visualizacion en consola
+    if os.sys.platform=='linux' or os.sys.platform=='darwin':          
         os.system('clear')
     else:
         os.system('cls')
 
-def pauseScreen():
+def pauseScreen():   #pausa la pantalla para tener tiempo suficiente para visualizar la informacion en pantalla, para salir de la pausa se define que pulse cualquier tecla
     input('Presione cualquier tecla para continuar... ')
