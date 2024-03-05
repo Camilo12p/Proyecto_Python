@@ -3,7 +3,9 @@ import modulos.validation as v
 from tabulate import tabulate
 
 
-def ListarActivos(srcData:dict):
+def ListarActivos():
+    srcData={}
+    srcData.update(core.readFile('Inventario_Campus.json'))
     Activos = []
     for key,value in srcData.get("Activos").items():
         Activos.append([value["codcampus"],value["nombre"],value["categoria"],value["tipo"],value["estado"]])
@@ -11,7 +13,9 @@ def ListarActivos(srcData:dict):
     print(tabulate(Activos,headers=headers, tablefmt="fancy_grid"))
     core.pauseScreen()
 
-def ListarPorCategoria(srcData:dict):
+def ListarPorCategoria():
+    srcData={}
+    srcData.update(core.readFile('Inventario_Campus.json'))
     isOption=True
     while isOption: 
         core.clearScreen()
@@ -36,7 +40,9 @@ def ListarPorCategoria(srcData:dict):
         
     
 
-def ListarActivosCategoria(srcData:dict,categoria:str):
+def ListarActivosCategoria(categoria:str):
+    srcData={}
+    srcData.update(core.readFile('Inventario_Campus.json'))
     Activos = []
     for key,value in srcData.get("Activos").items():
         if value["categoria"] == categoria:
@@ -45,7 +51,9 @@ def ListarActivosCategoria(srcData:dict,categoria:str):
     print(tabulate(Activos,headers=headers, tablefmt="fancy_grid"))
     core.clearScreen()
     
-def ListarActivosBaja(srcData:dict):
+def ListarActivosBaja():
+    srcData={}
+    srcData.update(core.readFile('Inventario_Campus.json'))
     Activos = []
     for key,value in srcData.get("Activos").items():
         if value["estado"] == 2:
@@ -55,7 +63,9 @@ def ListarActivosBaja(srcData:dict):
     print(tabulate(Activos,headers=headers, tablefmt="fancy_grid"))
     core.pauseScreen()
 
-def ListarActivosHistorial(srcData:dict):
+def ListarActivosHistorial():
+    srcData={}
+    srcData.update(core.readFile('Inventario_Campus.json'))
     core.clearScreen
     historial = []
     id = str(input("Ingrese el codigo de campus "))
@@ -71,7 +81,9 @@ def ListarActivosHistorial(srcData:dict):
         print("El id no se encuentra registrado ")
         ListarActivosHistorial(srcData)
     
-def listarAsignacion(srcData:dict):
+def listarAsignacion():
+    srcData={}
+    srcData.update(core.readFile('Inventario_Campus.json'))
     titulo='Que tipo de asignacion desea ver\n1.Personal\n2.Zonas\n'
     op=v.validateOpciones('Ingrese una opcion',titulo)
     if op==1:

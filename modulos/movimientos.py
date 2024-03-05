@@ -3,14 +3,16 @@ from modulos.asignaciones import CrearAsignacion,asignarASujeto,updateHistorial
 import modulos.validation as v
 from datetime import datetime
 
-def retornos(srcData:dict):
+def retornos():
+    srcData={}
+    srcData.update(core.readFile('Inventario_Campus.json'))
     id=str(input('Ingrese el activo a devolver --> '))
     r=0
     for key, value in srcData.get('Asignacion').items():
         for key2,value2 in value['activos'].items():
             if id in value2:
                 value['activos'].pop(key2)
-                v.validatePrestamo(srcData,srcData.get('Asignacion').get(key2).get('asignadoA'))
+                v.validatePrestamo(srcData,srcData.get('Asignacion').get(key).get('asignadoA'))
                 v.validateAsignacion(srcData)
                 srcData.get('Activos').get(id)['estado']=0
                 r=1
@@ -21,16 +23,19 @@ def retornos(srcData:dict):
     core.updateFile('Inventario_Campus.json',srcData)
     
 
-def darBaja(srcData:dict):
+def darBaja():
+    srcData={}
+    srcData.update(core.readFile('Inventario_Campus.json'))
     id1=v.validateInt('Ingrese su id')
     if str(id1) in srcData.get('Personas'):
-        id=str(input('Ingrese el activo a dar de baja --> '))   
+        id=str(input('Ingrese el activo a dar de baja --> ')).upper()
         for key, value in srcData.get('Asignacion').items():
             for key2,value2 in value['activos'].items():
                 if id in value2:
                     value['activos'].pop(key2)
+                    v.validatePrestamo(srcData,srcData.get('Asignacion').get(key).get('asignadoA'))
                     v.validateAsignacion(srcData)
-                    v.validatePrestamo(srcData,srcData.get('Asignacion').get(key2).get('asignadoA'))
+                    
                     break
         try:
             srcData.get('Activos').get(id)['estado']=2
@@ -42,18 +47,21 @@ def darBaja(srcData:dict):
         print('Usted no hace parte del personal de campus no tiene permiso de hacer cambios')
 
 
-def cambiarAsignacion(srcData:dict):
+def cambiarAsignacion():
+    srcData={}
+    srcData.update(core.readFile('Inventario_Campus.json'))
     id1=v.validateInt('Ingrese su id')
     if str(id1) in srcData.get('Personas'): 
-        id=str(input('Ingrese el activo a reasignar --> '))
+        id=str(input('Ingrese el activo a reasignar --> ')).upper()
         r=0
         for key, value in srcData.get('Asignacion').items():
             for key2,value2 in value['activos'].items():
                 if id in value2:
                     
                     value['activos'].pop(key2)
+                    v.validatePrestamo(srcData,srcData.get('Asignacion').get(key).get('asignadoA'))
                     v.validateAsignacion(srcData)
-                    v.validatePrestamo(srcData,srcData.get('Asignacion').get(key2).get('asignadoA'))
+                    
                     updateHistorial(srcData,4,id1,id)
                     r=1
                     break
@@ -62,17 +70,20 @@ def cambiarAsignacion(srcData:dict):
         print('Usted no hace parte del personal de campus no tiene permiso de hacer cambios')        
     
 
-def enviarGarantia(srcData:dict):
+def enviarGarantia():
+    srcData={}
+    srcData.update(core.readFile('Inventario_Campus.json'))
     id1=v.validateInt('Ingrese su id')
     if str(id1) in srcData.get('Personas'): 
-        id=str(input('Ingrese el activo a enviar a garantia --> '))
+        id=str(input('Ingrese el activo a enviar a garantia --> ')).upper()
 
         for key, value in srcData.get('Asignacion').items():
             for key2,value2 in value['activos'].items():
                 if id in value2:
                     value['activos'].pop(key2)
+                    v.validatePrestamo(srcData,srcData.get('Asignacion').get(key).get('asignadoA'))
                     v.validateAsignacion(srcData)
-                    v.validatePrestamo(srcData,srcData.get('Asignacion').get(key2).get('asignadoA'))
+                    
                     break
         try:
             srcData.get('Activos').get(id)['estado']=3

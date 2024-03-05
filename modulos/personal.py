@@ -2,7 +2,9 @@ import modulos.coreFile as core
 import modulos.validation as v
 from tabulate import tabulate
 
-def Agregar(srcData:dict):
+def Agregar():
+    srcData={}
+    srcData.update(core.readFile('Inventario_Campus.json'))
     id=v.validateInt('Ingrese el C.C. de la persona')
     if v.newRegister(str(id),'Personas'):
         return
@@ -29,7 +31,9 @@ def Agregar(srcData:dict):
     srcData.get('Personas').update({id:persona})
     core.updateFile('Inventario_Campus.json',srcData)
 
-def Editar(srcData:dict):
+def Editar():
+    srcData={}
+    srcData.update(core.readFile('Inventario_Campus.json'))
     id=str(v.validateInt('Ingrese el id de la persona a editar'))
     menu=[['1. Nombre'],['2.Email'],['3. telefonos']]
     menu2=[['1.movil'],['2.Casa'],['3.Personal'],['4.Oficina']]
@@ -71,7 +75,9 @@ def Editar(srcData:dict):
 
     core.updateFile('Inventario_Campus.json',srcData)
 
-def eliminar(srcData:dict):
+def eliminar():
+    srcData={}
+    srcData.update(core.readFile('Inventario_Campus.json'))
     id=str(v.validateInt('Ingrese el id de la persona a eliminar'))
     if id not in srcData.get('Personas'):
             print('El id no se encuentra en el sistema')
@@ -82,7 +88,9 @@ def eliminar(srcData:dict):
         print('No se puede eliminar la persona porque tiene un prestamo')
     core.updateFile('Inventario_Campus.json',srcData)
 
-def buscar(srcData:dict):
+def buscar():
+    srcData={}
+    srcData.update(core.readFile('Inventario_Campus.json'))
     id=str(v.validateInt('id de la persona a buscar'))
     if id not in srcData.get('Personas'):
             print('El id no se encuentra en el sistema')

@@ -2,7 +2,9 @@ import modulos.coreFile as core
 import modulos.validation as v
 from datetime import datetime
 
-def CrearAsignacion(srcData:dict):
+def CrearAsignacion():
+    srcData={}
+    srcData.update(core.readFile('Inventario_Campus.json'))
     id1=v.validateInt('Ingrese su id')
     if str(id1) in srcData.get('Personas'):
         titulo='Que tipo de asiganacion desea crear?'
@@ -14,13 +16,10 @@ def CrearAsignacion(srcData:dict):
         if tipo==1:
             r=0
             asignadoA=asignarASujeto(srcData,'Ingrese el id de la persona a asignar')
-            
-            
-            for key,value in srcData.get('Asignacion').items():
-                
-                añadirActivos(srcData,activos,id1)
-                if asignadoA == int(value['asignadoA']):
+            for key,value in srcData.get('Asignacion').items():                
+                if asignadoA ==(value['asignadoA']):
                     activos.update(value['activos'])
+                    añadirActivos(srcData,activos,id1)
                     value['activos'].update(activos)
                     r=1
                     break
@@ -34,8 +33,9 @@ def CrearAsignacion(srcData:dict):
                 'activos':activos
                 }
                 srcData.get('Asignacion').update({len(srcData.get('Asignacion'))+1:asignacion})
+                
             core.updateFile('Inventario_Campus.json',srcData)
-
+            v.validatePrestamo(srcData,asignadoA)
 
         elif tipo==2:
             r=0
@@ -51,9 +51,10 @@ def CrearAsignacion(srcData:dict):
             
             for key,value in srcData.get('Asignacion').items():
                 
-                añadirActivos(srcData,activos,id1)
+                
                 if asignadoA == str(value['asignadoA']):
                     activos.update(value['activos'])
+                    añadirActivos(srcData,activos,id1)
                     value['activos'].update(activos)
                     r=1
                     break
@@ -75,7 +76,7 @@ def CrearAsignacion(srcData:dict):
             
 
 def añadirActivos(srcData:dict,activos:dict, id1:int)->dict:
-        
+    
     id2=input('Ingrese el Nro de campus del activo a ingresar --> ')  #validar el id como se vaya a llamar en el dictionario activo
     if id2 not in srcData.get('Activos'):
         print('El id no se encuentra en el sistema')

@@ -2,7 +2,9 @@ import modulos.coreFile as core
 import modulos.validation as v
 from tabulate import tabulate
 
-def CrearZona(srcData:dict):
+def CrearZona():
+    srcData={}
+    srcData.update(core.readFile('Inventario_Campus.json'))
     NombreZona=v.validateStr('Ingrese el nombre de la zona').capitalize()
     if v.newRegisterZona(NombreZona,'Zonas'):
         return
@@ -17,7 +19,9 @@ def CrearZona(srcData:dict):
     srcData.get('Zonas').update({nrozona:Zona})
     core.updateFile('Inventario_Campus.json',srcData)
 
-def Editar(srcData:dict):
+def Editar():
+    srcData={}
+    srcData.update(core.readFile('Inventario_Campus.json'))
     id=v.validateStr('Ingrese el nombre de la zona a editar').capitalize()
     menu=[['1. Nombre de la zona'],['2. Total Capacidad de la zona']]
     id2=0
@@ -51,7 +55,9 @@ def Editar(srcData:dict):
 
         core.updateFile('Inventario_Campus.json',srcData)
 
-def eliminar(srcData:dict):
+def eliminar():
+    srcData={}
+    srcData.update(core.readFile('Inventario_Campus.json'))
     id2=0
     id=v.validateStr('Ingrese la zona a eliminar').capitalize()
     r=0
@@ -69,7 +75,9 @@ def eliminar(srcData:dict):
     srcData.get('Zonas').pop(id2)
     core.updateFile('Inventario_Campus.json',srcData)
 
-def buscar(srcData:dict):
+def buscar():
+    srcData={}
+    srcData.update(core.readFile('Inventario_Campus.json'))
     id2=0
     id=v.validateStr('Ingrese la zona a buscar').capitalize()
     r=0

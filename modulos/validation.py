@@ -53,8 +53,9 @@ def validateEmail(context:str):
         return ''.join(e)
 
 def validatePrestamo(srcData:dict,id:int):
+    srcData.update(readFile('Inventario_Campus.json'))
     for key,value in srcData.get('Asignacion').items():
-        if int(value['asignadoA'])==id:
+        if (value['asignadoA'])==str(id):
             srcData.get('Personas').get(str(id))['Prestamo']=True
             break
         else:

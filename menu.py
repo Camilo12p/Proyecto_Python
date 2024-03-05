@@ -72,16 +72,16 @@ def menuActivos(srcData:dict):
         core.clearScreen()
         op=v.validateOpciones('Ingrese una opcion',titulo,tabulate(menu,tablefmt='fancy_grid'))
         if op==1:
-            ac.DictActivos(srcData)
+            ac.DictActivos()
             core.pauseScreen()
         elif op==2:
-            ac.Editar(srcData)
+            ac.Editar()
             core.pauseScreen()
         elif op==3:
-            ac.eliminar(srcData)
+            ac.eliminar()
             core.pauseScreen()
         elif op==4:
-            ac.buscar(srcData)
+            ac.buscar()
             core.pauseScreen()
         elif op==5:
             isOption=False
@@ -104,16 +104,16 @@ def menuPesonal(srcData:dict):
         core.clearScreen()
         op=v.validateOpciones('Ingrese una opcion',titulo,tabulate(menu,tablefmt='fancy_grid'))
         if op==1:
-            p.Agregar(srcData)
+            p.Agregar()
             core.pauseScreen()
         elif op==2:
-            p.Editar(srcData)
+            p.Editar()
             core.pauseScreen()
         elif op==3:
-            p.eliminar(srcData)
+            p.eliminar()
             core.pauseScreen()
         elif op==4:
-            p.buscar(srcData)
+            p.buscar()
             core.pauseScreen()
         elif op==5:
             isOption=False
@@ -136,16 +136,16 @@ def menuZonas(srcData:dict):
         core.clearScreen()
         op=v.validateOpciones('Ingrese una opcion',titulo,tabulate(menu,tablefmt='fancy_grid'))
         if op==1:
-            zo.CrearZona(srcData)
+            zo.CrearZona()
             core.pauseScreen()
         elif op==2:
-            zo.Editar(srcData)
+            zo.Editar()
             core.pauseScreen()
         elif op==3:
-            zo.eliminar(srcData)
+            zo.eliminar()
             core.pauseScreen()
         elif op==4:
-            zo.buscar(srcData)
+            zo.buscar()
             core.pauseScreen()
         elif op==5:
             isOption=False
@@ -170,10 +170,10 @@ def menuAsignacion(srcData:dict):
         core.clearScreen()
         op=v.validateOpciones('Ingrese una opcion',titulo,tabulate(menu,tablefmt='fancy_grid'))
         if op==1:
-            A.CrearAsignacion(srcData)
+            A.CrearAsignacion()
             core.pauseScreen()
         elif op==2:
-            rp.listarAsignacion(srcData)
+            rp.listarAsignacion()
             core.pauseScreen()
         elif op==3:
             isOption=False
@@ -192,15 +192,15 @@ def menuReportes(srcData:dict):
         core.clearScreen()
         op=v.validateOpciones('Ingrese una opcion',titulo,tabulate(menu,tablefmt='fancy_grid'))
         if op==1:
-            rp.ListarActivos(srcData)
+            rp.ListarActivos()
         elif op==2:
-            rp.ListarPorCategoria(srcData)
+            rp.ListarPorCategoria()
         elif op==3:
-            rp.ListarActivosBaja(srcData)
+            rp.ListarActivosBaja()
         elif op==4:
-            rp.listarAsignacion(srcData)
+            rp.listarAsignacion()
         elif op==5:
-            rp.ListarActivosHistorial(srcData)
+            rp.ListarActivosHistorial()
         elif op==6:
             isOption=False
             menuPrincipal(srcData)
@@ -223,16 +223,16 @@ def menuMovimientos(srcData:dict):
         core.clearScreen()
         op=v.validateOpciones('Ingrese una opcion',titulo,tabulate(menu,tablefmt='fancy_grid'))
         if op==1:
-            m.retornos(srcData)
+            m.retornos()
             core.pauseScreen()
         elif op==2:
-            m.darBaja(srcData)
+            m.darBaja()
             core.pauseScreen()
         elif op==3:
-            m.cambiarAsignacion(srcData)
+            m.cambiarAsignacion()
             core.pauseScreen()
         elif op==4:
-            m.enviarGarantia(srcData)
+            m.enviarGarantia()
             core.pauseScreen()
         elif op==5:
             isOption=False
