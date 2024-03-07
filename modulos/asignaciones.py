@@ -28,7 +28,7 @@ def CrearAsignacion():
                 asignacion={
                 'nroAsignacion':str(len(srcData.get('Asignacion'))+1).zfill(4),
                 'fechaAsignacion':datetime.strftime(datetime.now(), '%B %d %Y'),
-                'tipoAsignacion':'zona',
+                'tipoAsignacion':'Personal',
                 'asignadoA':asignadoA,
                 'activos':activos
                 }
@@ -45,7 +45,7 @@ def CrearAsignacion():
                 print(f'{key}.',value['NombreZona'])
                 zonas.append(value['NombreZona'])
 
-            op=v.validateOpciones('Ingrese una opcion') 
+            op=v.validateOpciones2('Ingrese una opcion') 
             asignadoA=zonas[op-1]
             
             
@@ -76,8 +76,6 @@ def CrearAsignacion():
             
 #En esta seccion esta la funcion para añadir un activo
 def añadirActivos(srcData:dict,activos:dict, id1:int)->dict:
-    srcData={}
-    srcData.update(core.readFile('Inventario_Campus.json'))
     id2=input('Ingrese el Nro de campus del activo a ingresar --> ')  #validar el id como se vaya a llamar en el dictionario activo
     if id2 not in srcData.get('Activos'):
         print('El id no se encuentra en el sistema')
@@ -126,3 +124,4 @@ def updateHistorial(srcData:dict,tipo:int,responsable:int,idActivo:str):
         'idResponsable':responsable
     }
     srcData.get('Activos').get(idActivo)['historial'].update({len(srcData.get('Activos').get(idActivo)['historial'])+1:historial})
+    core.updateFile('Inventario_Campus.json',srcData)

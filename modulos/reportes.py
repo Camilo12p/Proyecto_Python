@@ -21,21 +21,18 @@ def ListarPorCategoria():
         core.clearScreen()
         print("Que categoria desea buscar")
         print("1. Equipo de computo\n2. Electrodomestico\n3. Juego\n4. Volver a reportes")
-        op=v.validateInt('Ingrese una opcion --> ')
+        op=v.validateOpciones2('Ingrese una opcion')
         if op==1:
-            ListarActivosCategoria(srcData,"Equipo de computo")
+            ListarActivosCategoria("Equipo de computo")
             core.pauseScreen()
         elif op==2:
-            ListarActivosCategoria(srcData,"Electrodomestico")
+            ListarActivosCategoria("Electrodomestico")
             core.pauseScreen()
         elif op==3:
-            ListarActivosCategoria(srcData,"Juego")
+            ListarActivosCategoria("Juego")
             core.pauseScreen()
         elif op==4:
-           pass
-        elif op==5:
-            ListarActivosHistorial(srcData,"historial")
-            core.pauseScreen()
+            isOption=False
             
         
     
@@ -99,7 +96,7 @@ def listarAsignacion():
             print(f'{key}.',value['NombreZona'])
             zonas.append(value['NombreZona'])
 
-        op=v.validateOpciones('Ingrese una opcion')
+        op=v.validateOpciones2('Ingrese una opcion')
 
         for key,value in srcData.get('Asignacion').items():
             if zonas[op-1] == (value['asignadoA']):

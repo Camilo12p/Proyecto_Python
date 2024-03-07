@@ -1,7 +1,53 @@
 {
-    "Personas": {},
-    "Zonas": {},
-    "Asignacion": {},
+    "Personas": {
+        "456": {
+            "id": 456,
+            "name": "camilo",
+            "email": "2wdwqdw@",
+            "telefonos": {
+                "movil": 3313,
+                "casa": 1213,
+                "personal": 1213,
+                "oficina": 131
+            },
+            "Prestamo": false
+        },
+        "123": {
+            "id": 123,
+            "name": "edewfe",
+            "email": "f2cew@efew",
+            "telefonos": {
+                "movil": 123,
+                "casa": 232,
+                "personal": 2323,
+                "oficina": 232
+            },
+            "Prestamo": false
+        }
+    },
+    "Zonas": {
+        "1": {
+            "NombreZona": "Sputnik",
+            "TotalCapacidad": 33,
+            "NroZona": 1
+        },
+        "2": {
+            "NombreZona": "Zona",
+            "TotalCapacidad": 33,
+            "NroZona": 2
+        }
+    },
+    "Asignacion": {
+        "2": {
+            "nroAsignacion": "0002",
+            "fechaAsignacion": "March 06 2024",
+            "tipoAsignacion": "personal",
+            "asignadoA": 456,
+            "activos": {
+                "1": "MON0001"
+            }
+        }
+    },
     "Activos": {
         "CP0001": {
             "codTransaccion": "327",
@@ -15,8 +61,33 @@
             "proveedor": "Compumax Computer ",
             "nroserial": "400SN39173",
             "empresaresponsable": "Campuslands",
-            "estado": 0,
-            "historial": {}
+            "estado": 2,
+            "historial": {
+                "1": {
+                    "NroHistorial": 1,
+                    "fecha": "March 06 2024",
+                    "tipoMov": 1,
+                    "idResponsable": 123
+                },
+                "2": {
+                    "NroHistorial": 2,
+                    "fecha": "March 06 2024",
+                    "tipoMov": 2,
+                    "idResponsable": 123
+                },
+                "3": {
+                    "NroHistorial": 3,
+                    "fecha": "March 06 2024",
+                    "tipoMov": 2,
+                    "idResponsable": 123
+                },
+                "4": {
+                    "NroHistorial": 4,
+                    "fecha": "March 06 2024",
+                    "tipoMov": 2,
+                    "idResponsable": 123
+                }
+            }
         },
         "MON0001": {
             "codTransaccion": "327",
@@ -30,8 +101,21 @@
             "proveedor": "Compumax Computer ",
             "nroserial": "COM2024CM21070723",
             "empresaresponsable": "Campuslands",
-            "estado": 0,
-            "historial": {}
+            "estado": 1,
+            "historial": {
+                "1": {
+                    "NroHistorial": 1,
+                    "fecha": "March 06 2024",
+                    "tipoMov": 1,
+                    "idResponsable": 123
+                },
+                "2": {
+                    "NroHistorial": 2,
+                    "fecha": "March 06 2024",
+                    "tipoMov": 4,
+                    "idResponsable": 123
+                }
+            }
         },
         "TE0001": {
             "codTransaccion": "327",
@@ -75,8 +159,27 @@
             "proveedor": "Compumax Computer ",
             "nroserial": "400SN39208",
             "empresaresponsable": "Campuslands",
-            "estado": 0,
-            "historial": {}
+            "estado": 2,
+            "historial": {
+                "1": {
+                    "NroHistorial": 1,
+                    "fecha": "March 06 2024",
+                    "tipoMov": 1,
+                    "idResponsable": 123
+                },
+                "2": {
+                    "NroHistorial": 2,
+                    "fecha": "March 06 2024",
+                    "tipoMov": 2,
+                    "idResponsable": 123
+                },
+                "3": {
+                    "NroHistorial": 3,
+                    "fecha": "March 06 2024",
+                    "tipoMov": 2,
+                    "idResponsable": 123
+                }
+            }
         },
         "MON0002": {
             "codTransaccion": "327",
@@ -90,8 +193,21 @@
             "proveedor": "Compumax Computer ",
             "nroserial": "COM2024CM21070880",
             "empresaresponsable": "Campuslands",
-            "estado": 0,
-            "historial": {}
+            "estado": 3,
+            "historial": {
+                "1": {
+                    "NroHistorial": 1,
+                    "fecha": "March 06 2024",
+                    "tipoMov": 1,
+                    "idResponsable": 456
+                },
+                "2": {
+                    "NroHistorial": 2,
+                    "fecha": "March 06 2024",
+                    "tipoMov": 3,
+                    "idResponsable": 123
+                }
+            }
         },
         "TE0002": {
             "codTransaccion": "327",
@@ -7380,6 +7496,21 @@
             "proveedor": "Compumax Computer ",
             "nroserial": "CK440U-10656",
             "empresaresponsable": "Campuslands",
+            "estado": 0,
+            "historial": {}
+        },
+        "123": {
+            "codTransaccion": 23345,
+            "nroformulario": 53243,
+            "codcampus": "123",
+            "nombre": "efewfewfef3232",
+            "marca": "camilo",
+            "categoria": "Equipo de computo",
+            "tipo": "Monitor",
+            "valorUnitario": 645334.0,
+            "proveedor": "hgfojo",
+            "nroserial": "dhswh11w1",
+            "empresaResponsable": "fefdds",
             "estado": 0,
             "historial": {}
         }

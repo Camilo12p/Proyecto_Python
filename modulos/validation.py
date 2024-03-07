@@ -56,11 +56,12 @@ def validateEmail(context:str):
 def validatePrestamo(srcData:dict,id:int):
     srcData.update(readFile('Inventario_Campus.json'))
     for key,value in srcData.get('Asignacion').items():
-        if (value['asignadoA'])==str(id):
+        if (value['asignadoA'])==str(id) and type(id)==int:
             srcData.get('Personas').get(str(id))['Prestamo']=True
             break
         else:
-            srcData.get('Personas').get(str(id))['Prestamo']=False    
+            if type(id)==int:
+                srcData.get('Personas').get(str(id))['Prestamo']=False    
 
     updateFile('Inventario_Campus.json',srcData)
 
@@ -100,6 +101,16 @@ def validateOpciones(context:str,titulo='',titulo2=''):
     clearScreen()
     print(titulo)
     print(titulo2)
+    try:
+        num=int(input(context +' --> '))
+        if num>=0 and num<=15:
+            return num
+        else:
+            return validateOpciones(context,titulo,titulo2)
+    except ValueError:
+        return validateOpciones(context,titulo,titulo2)
+
+def validateOpciones2(context:str)->str:
     try:
         num=int(input(context +' --> '))
         if num>=0 and num<=15:

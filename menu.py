@@ -225,16 +225,16 @@ def menuMovimientos(srcData:dict):
         core.clearScreen()
         op=v.validateOpciones('Ingrese una opcion',titulo,tabulate(menu,tablefmt='fancy_grid'))
         if op==1:
-            m.retornos()
+            m.retornos(srcData)
             core.pauseScreen()
         elif op==2:
-            m.darBaja()
+            m.darBaja(srcData)
             core.pauseScreen()
         elif op==3:
-            m.cambiarAsignacion()
+            m.cambiarAsignacion(srcData)
             core.pauseScreen()
         elif op==4:
-            m.enviarGarantia()
+            m.enviarGarantia(srcData)
             core.pauseScreen()
         elif op==5:
             isOption=False

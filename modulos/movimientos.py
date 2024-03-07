@@ -3,15 +3,14 @@ from modulos.asignaciones import CrearAsignacion,asignarASujeto,updateHistorial
 import modulos.validation as v
 from datetime import datetime
 
-def retornos():
-    srcData={}
-    srcData.update(core.readFile('Inventario_Campus.json'))
+def retornos(srcData:dict):
     id=str(input('Ingrese el activo a devolver --> '))
     r=0
     for key, value in srcData.get('Asignacion').items():
         for key2,value2 in value['activos'].items():
             if id in value2:
                 value['activos'].pop(key2)
+                core.updateFile('Inventario_Campus.json',srcData)
                 v.validatePrestamo(srcData,srcData.get('Asignacion').get(key).get('asignadoA'))
                 v.validateAsignacion(srcData)
                 srcData.get('Activos').get(id)['estado']=0
@@ -23,9 +22,7 @@ def retornos():
     core.updateFile('Inventario_Campus.json',srcData)
     
 
-def darBaja():
-    srcData={}
-    srcData.update(core.readFile('Inventario_Campus.json'))
+def darBaja(srcData:dict):
     id1=v.validateInt('Ingrese su id')    #aqui esta validando que el id ingresado esta dentro de personas
     if str(id1) in srcData.get('Personas'):
         id=str(input('Ingrese el activo a dar de baja --> ')).upper() #si el id esta pasa a mostrar el mensaje de ingrese el activo a dar de baja
@@ -33,6 +30,7 @@ def darBaja():
             for key2,value2 in value['activos'].items():
                 if id in value2:
                     value['activos'].pop(key2)
+                    core.updateFile('Inventario_Campus.json',srcData)
                     v.validatePrestamo(srcData,srcData.get('Asignacion').get(key).get('asignadoA'))
                     v.validateAsignacion(srcData)
                     
@@ -47,9 +45,7 @@ def darBaja():
         print('Usted no hace parte del personal de campus no tiene permiso de hacer cambios')
 
 
-def cambiarAsignacion():
-    srcData={}
-    srcData.update(core.readFile('Inventario_Campus.json'))
+def cambiarAsignacion(srcData:dict):
     id1=v.validateInt('Ingrese su id')
     if str(id1) in srcData.get('Personas'): 
         id=str(input('Ingrese el activo a reasignar --> ')).upper()
@@ -59,6 +55,7 @@ def cambiarAsignacion():
                 if id in value2:
                     
                     value['activos'].pop(key2)
+                    core.updateFile('Inventario_Campus.json',srcData)
                     v.validatePrestamo(srcData,srcData.get('Asignacion').get(key).get('asignadoA'))
                     v.validateAsignacion(srcData)
                     
@@ -70,9 +67,7 @@ def cambiarAsignacion():
         print('Usted no hace parte del personal de campus no tiene permiso de hacer cambios')        
     
 
-def enviarGarantia():
-    srcData={}
-    srcData.update(core.readFile('Inventario_Campus.json'))
+def enviarGarantia(srcData:dict):
     id1=v.validateInt('Ingrese su id')
     if str(id1) in srcData.get('Personas'): 
         id=str(input('Ingrese el activo a enviar a garantia --> ')).upper()
@@ -81,6 +76,7 @@ def enviarGarantia():
             for key2,value2 in value['activos'].items():
                 if id in value2:
                     value['activos'].pop(key2)
+                    core.updateFile('Inventario_Campus.json',srcData)
                     v.validatePrestamo(srcData,srcData.get('Asignacion').get(key).get('asignadoA'))
                     v.validateAsignacion(srcData)
                     
