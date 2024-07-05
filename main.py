@@ -2,7 +2,7 @@ import menu as m
 import os
 import modulos.coreFile as core 
 
-
+# resto es una prte
 
 if __name__ == '__main__' :
     core.clearScreen()
